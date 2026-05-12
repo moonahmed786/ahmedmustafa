@@ -10,6 +10,7 @@ const LINKS = [
     href: 'https://linkedin.com/in/ahmed-mustafa-b3613754',
   },
   { icon: Github, label: 'github.com/moonahmed786', sub: 'GitHub', href: 'https://github.com/moonahmed786' },
+  { icon: ArrowUpRight, label: 'ahmedmustafa.programmersin.com', sub: 'Portfolio', href: 'https://ahmedmustafa.programmersin.com/' },
 ]
 
 export default function Contact() {

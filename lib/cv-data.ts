@@ -2,7 +2,7 @@
 export const AHMED_MASTER_CV = `AHMED MUSTAFA
 Senior Solutions Architect and Full-Stack Engineer
 moonahmed786@gmail.com | +92 332 837 1943 | Rawalpindi, Punjab, PK · UTC+5
-linkedin.com/in/ahmed-mustafa-b3613754 | github.com/moonahmed786 | programmersin.com
+linkedin.com/in/ahmed-mustafa-b3613754 | github.com/moonahmed786 | ahmedmustafa.programmersin.com
 
 PROFESSIONAL SUMMARY
 Senior Solutions Architect and Technical Lead with 10+ years of experience designing scalable distributed systems and AI-integrated platforms across Healthcare, Fintech, E-commerce, and Telecom. Expert in the MERN stack, Enterprise PHP (Laravel), and Python (FastAPI, RAG, LLMs). Proven track record leading cross-functional engineering teams, conceptualizing high-concurrency microservices, and delivering production-grade AI products including medical chatbots, carbon credit platforms, and enterprise healthcare integrations. Strong in system design, API architecture, and stakeholder management.
