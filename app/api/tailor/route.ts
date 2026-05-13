@@ -1,8 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import { NextRequest, NextResponse } from 'next/server'
 import { AHMED_MASTER_CV } from '@/lib/cv-data'
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY || 'dummy' })
+const gemini = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY || 'dummy')
 
 // In-memory rate limiter: 5 requests per minute per IP
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
@@ -109,42 +111,62 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Job description is required.' }, { status: 400 })
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.ANTHROPIC_API_KEY && !process.env.GOOGLE_GEMINI_API_KEY) {
     return NextResponse.json(
-      { error: 'API key not configured. Add ANTHROPIC_API_KEY to your .env.local file.' },
+      { error: 'API keys not configured. Add ANTHROPIC_API_KEY or GOOGLE_GEMINI_API_KEY to your environment.' },
       { status: 503 }
     )
   }
 
+  const promptContent = `MASTER CV:\n"""\n${AHMED_MASTER_CV}\n"""\n\nJOB DESCRIPTION:\n"""\n${jd}\n"""\n\nGenerate the tailored CV now. Return JSON only.`
+
   try {
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 4000,
-      system: SYSTEM_PROMPT,
-      messages: [
-        {
-          role: 'user',
-          content: `MASTER CV:\n"""\n${AHMED_MASTER_CV}\n"""\n\nJOB DESCRIPTION:\n"""\n${jd}\n"""\n\nGenerate the tailored CV now. Return JSON only.`,
-        },
-      ],
-    })
+    // ─── ATTEMPT 1: ANTHROPIC (CLAUDE) ───
+    if (process.env.ANTHROPIC_API_KEY) {
+      try {
+        const response = await anthropic.messages.create({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 4000,
+          system: SYSTEM_PROMPT,
+          messages: [{ role: 'user', content: promptContent }],
+        })
 
-    const text = response.content
-      .filter((b): b is Anthropic.TextBlock => b.type === 'text')
-      .map((b) => b.text)
-      .join('')
+        const text = response.content
+          .filter((b): b is Anthropic.TextBlock => b.type === 'text')
+          .map((b) => b.text)
+          .join('')
 
-    const cleaned = text.replace(/```json\s*/g, '').replace(/```\s*$/g, '').trim()
-    const start = cleaned.indexOf('{')
-    const end = cleaned.lastIndexOf('}')
-    if (start === -1 || end === -1) {
-      throw new Error('Unexpected response format from model.')
+        return NextResponse.json(parseResult(text))
+      } catch (err: any) {
+        // Fallback if credit issue or rate limit
+        const isQuotaError = err?.status === 401 || err?.status === 429 || err?.message?.includes('credit') || err?.message?.includes('insufficient_funds')
+        if (!isQuotaError || !process.env.GOOGLE_GEMINI_API_KEY) throw err
+        console.warn('Anthropic limit reached. Falling back to Gemini...')
+      }
     }
 
-    const result = JSON.parse(cleaned.slice(start, end + 1))
-    return NextResponse.json(result)
+    // ─── ATTEMPT 2: GOOGLE (GEMINI) FALLBACK ───
+    const model = gemini.getGenerativeModel({ model: 'gemini-1.5-pro' })
+    const result = await model.generateContent({
+      contents: [{ role: 'user', parts: [{ text: `${SYSTEM_PROMPT}\n\n${promptContent}` }] }],
+      generationConfig: { responseMimeType: 'application/json' },
+    })
+
+    const text = result.response.text()
+    return NextResponse.json(parseResult(text))
+
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'
     return NextResponse.json({ error: `Generation failed: ${message}` }, { status: 500 })
   }
+}
+
+function parseResult(text: string) {
+  const cleaned = text.replace(/```json\s*/g, '').replace(/```\s*$/g, '').trim()
+  const start = cleaned.indexOf('{')
+  const end = cleaned.lastIndexOf('}')
+  if (start === -1 || end === -1) {
+    throw new Error('Unexpected response format from model.')
+  }
+  return JSON.parse(cleaned.slice(start, end + 1))
 }
