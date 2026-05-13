@@ -12,7 +12,8 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: 'Ahmed Mustafa — Senior Solutions Architect & Full-Stack Engineer',
+  metadataBase: new URL('https://ahmedmustafa.programmersin.com'),
+  title: 'Ahmed Mustafa — Senior Solutions Architect & AI Lead',
   description:
     'Senior Solutions Architect with 10+ years of experience in AI, MERN, and Enterprise PHP. Leading AI Agent development, RAG systems, and scalable healthcare platforms.',
   keywords: ['Solutions Architect', 'Full Stack Engineer', 'AI Agent Developer', 'RAG Specialist', 'Ahmed Mustafa Portfolio'],
