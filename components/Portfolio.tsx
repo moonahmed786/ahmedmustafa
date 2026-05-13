@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Nav from './Nav'
 import Hero from './Hero'
 import About from './About'
@@ -26,9 +27,36 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <div className="min-h-screen w-full" style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
+    <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
+      <AnimatePresence>
+        {!loaded && (
+          <motion.div 
+            key="loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[5000] bg-black flex items-center justify-center"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-3"
+            >
+              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="mono text-[10px] tracking-[0.3em] uppercase text-white">Initializing Engine...</span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Nav />
-      <main className="relative" style={{ zIndex: 2 }}>
+      <motion.main 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="relative" 
+        style={{ zIndex: 2 }}
+      >
         <Hero loaded={loaded} />
         <About />
         <Experience />
@@ -38,7 +66,7 @@ export default function Portfolio() {
         <Education />
         <Certifications />
         <Contact />
-      </main>
+      </motion.main>
       <Footer />
     </div>
   )

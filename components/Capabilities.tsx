@@ -1,38 +1,129 @@
+'use client'
+
 import { SKILLS } from '@/lib/cv-data'
+import { motion } from 'framer-motion'
+import { Code2, Server, Layout, Database, Brain, Cloud, Network, Wrench, BadgeCheck } from 'lucide-react'
+
+const ICON_MAP: Record<string, any> = {
+  Code2,
+  Server,
+  Layout,
+  Database,
+  Brain,
+  Cloud,
+  Network,
+  Wrench
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  'Languages': '#38bdf8',         // Blue
+  'Backend Frameworks': '#4ade80', // Green
+  'Frontend': '#f472b6',          // Pink
+  'Databases': '#fbbf24',         // Amber
+  'AI & ML': '#818cf8',           // Indigo
+  'Cloud & DevOps': '#2dd4bf',    // Teal
+  'APIs & Architecture': '#a78bfa', // Purple
+  'Tools': '#94a3b8'              // Slate
+}
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+}
+
+const pillVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4 }
+  }
+}
 
 export default function Capabilities() {
   return (
     <section id="capabilities" className="relative px-6 py-24 border-t" style={{ borderColor: 'var(--border)' }}>
       <div className="max-w-6xl mx-auto">
-        <p className="section-label mb-6">§04 / Capabilities</p>
-        <h2 className="display text-5xl md:text-7xl leading-tight mb-4" style={{ color: 'var(--fg)', fontWeight: 400 }}>
-          The <span className="italic">toolkit</span>.
-        </h2>
-        <p className="text-base mb-16" style={{ color: 'var(--muted)', fontWeight: 300 }}>
-          Full-stack to cloud to AI — the technologies I rely on in production.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="section-label mb-6">§04 / Capabilities</p>
+          <h2 className="display text-5xl md:text-7xl leading-tight mb-4" style={{ color: 'var(--fg)', fontWeight: 400 }}>
+            The <span className="italic" style={{ color: 'var(--accent)' }}>toolkit</span>.
+          </h2>
+          <p className="text-base mb-16" style={{ color: 'var(--muted)', fontWeight: 300 }}>
+            Full-stack to cloud to AI — the technologies I rely on in production.
+          </p>
+        </motion.div>
 
-        <div>
-          {SKILLS.map((s, i) => (
-            <div
-              key={i}
-              className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10 py-6 border-t"
-              style={{ borderColor: 'var(--border)' }}
-            >
-              <div className="md:w-52 shrink-0">
-                <span className="mono text-[10px] tracking-[0.2em] uppercase" style={{ color: '#665e52' }}>
-                  {String(i + 1).padStart(2, '0')} / {s.cat}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {s.items.map((item) => (
-                  <span key={item} className="chip">{item}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div className="border-t" style={{ borderColor: 'var(--border)' }} />
-        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-x-12 gap-y-1"
+        >
+          {SKILLS.map((s, i) => {
+            const Icon = ICON_MAP[s.icon] || BadgeCheck
+            const color = CATEGORY_COLORS[s.cat] || '#38bdf8'
+            
+            return (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="flex flex-col gap-6 py-10 border-t group transition-all"
+                style={{ borderColor: 'var(--border)' }}
+              >
+                <div className="flex items-center gap-4">
+                   <div 
+                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
+                    style={{ backgroundColor: `${color}10`, border: `1px solid ${color}30`, color: color }}
+                   >
+                     <Icon size={20} />
+                   </div>
+                   <div>
+                    <span className="mono text-[9px] tracking-[0.2em] uppercase block opacity-40 mb-1">
+                      {String(i + 1).padStart(2, '0')} / Category
+                    </span>
+                    <h3 className="text-lg font-medium" style={{ color: 'var(--fg)' }}>{s.cat}</h3>
+                   </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {s.items.map((item) => (
+                    <motion.span 
+                      key={item} 
+                      variants={pillVariants}
+                      whileHover={{ scale: 1.05, borderColor: color, color: color, backgroundColor: `${color}05` }}
+                      className="chip border-opacity-30"
+                    >
+                      {item}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+        <div className="border-t" style={{ borderColor: 'var(--border)' }} />
       </div>
     </section>
   )

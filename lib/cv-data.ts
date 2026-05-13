@@ -180,14 +180,14 @@ export const TIMELINE = [
 
 // ─── SKILLS ────────────────────────────────────────────────────────────────────
 export const SKILLS = [
-  { cat: 'Languages', items: ['PHP', 'Python', 'JavaScript (ES6+)', 'TypeScript'] },
-  { cat: 'Backend Frameworks', items: ['Laravel', 'Yii2', 'Node.js', 'NestJS', 'Express', 'FastAPI'] },
-  { cat: 'Frontend', items: ['React.js', 'Next.js', 'Vue.js'] },
-  { cat: 'Databases', items: ['MySQL', 'MongoDB', 'PostgreSQL', 'Redis', 'Vector Databases (Pinecone, pgvector)'] },
-  { cat: 'AI & ML', items: ['LLMs', 'RAG', 'AI Pipelines', 'Prompt Engineering', 'Vector Search'] },
-  { cat: 'Cloud & DevOps', items: ['AWS (EC2, S3, RDS, Lambda)', 'Docker', 'CI/CD', 'GitHub Actions', 'Jenkins'] },
-  { cat: 'APIs & Architecture', items: ['REST', 'GraphQL', 'Microservices', 'Event-Driven Design', 'System Design'] },
-  { cat: 'Tools', items: ['Git', 'JIRA', 'Postman'] },
+  { cat: 'Languages', icon: 'Code2', items: ['PHP', 'Python', 'JavaScript (ES6+)', 'TypeScript'] },
+  { cat: 'Backend Frameworks', icon: 'Server', items: ['Laravel', 'Yii2', 'Node.js', 'NestJS', 'Express', 'FastAPI'] },
+  { cat: 'Frontend', icon: 'Layout', items: ['React.js', 'Next.js', 'Vue.js'] },
+  { cat: 'Databases', icon: 'Database', items: ['MySQL', 'MongoDB', 'PostgreSQL', 'Redis', 'Vector Databases (Pinecone, pgvector)'] },
+  { cat: 'AI & ML', icon: 'Brain', items: ['LLMs', 'RAG', 'AI Pipelines', 'Prompt Engineering', 'Vector Search'] },
+  { cat: 'Cloud & DevOps', icon: 'Cloud', items: ['AWS (EC2, S3, RDS, Lambda)', 'Docker', 'CI/CD', 'GitHub Actions', 'Jenkins'] },
+  { cat: 'APIs & Architecture', icon: 'Network', items: ['REST', 'GraphQL', 'Microservices', 'Event-Driven Design', 'System Design'] },
+  { cat: 'Tools', icon: 'Wrench', items: ['Git', 'JIRA', 'Postman'] },
 ]
 
 // ─── EDUCATION ─────────────────────────────────────────────────────────────────
