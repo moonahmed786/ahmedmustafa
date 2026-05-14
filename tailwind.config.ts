@@ -7,7 +7,17 @@ const config: Config = {
     './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bg: 'var(--bg)',
+        fg: 'var(--fg)',
+        accent: 'var(--accent)',
+        'accent-warm': 'var(--accent-warm)',
+        surface: 'var(--surface)',
+        border: 'var(--border)',
+        muted: 'var(--muted)',
+      },
+    },
   },
   plugins: [],
 }

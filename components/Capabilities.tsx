@@ -89,31 +89,31 @@ export default function Capabilities() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="flex flex-col gap-6 py-10 border-t group transition-all"
+                className="flex flex-col gap-8 py-12 border-t group transition-all"
                 style={{ borderColor: 'var(--border)' }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-6">
                    <div 
-                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
-                    style={{ backgroundColor: `${color}10`, border: `1px solid ${color}30`, color: color }}
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-black/20"
+                    style={{ backgroundColor: 'var(--surface-hover)', border: `1px solid ${color}30`, color: color }}
                    >
-                     <Icon size={20} />
+                     <Icon size={24} />
                    </div>
                    <div>
-                    <span className="mono text-[9px] tracking-[0.2em] uppercase block opacity-40 mb-1">
-                      {String(i + 1).padStart(2, '0')} / Category
+                    <span className="mono text-[9px] tracking-[0.4em] uppercase block opacity-30 mb-2 font-bold">
+                      {String(i + 1).padStart(2, '0')} / {s.cat}
                     </span>
-                    <h3 className="text-lg font-medium" style={{ color: 'var(--fg)' }}>{s.cat}</h3>
+                    <h3 className="text-xl font-medium tracking-tight" style={{ color: 'var(--fg)' }}>{s.cat}</h3>
                    </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {s.items.map((item) => (
                     <motion.span 
                       key={item} 
                       variants={pillVariants}
                       whileHover={{ scale: 1.05, borderColor: color, color: color, backgroundColor: `${color}05` }}
-                      className="chip border-opacity-30"
+                      className="chip border-opacity-20 px-5 py-2.5"
                     >
                       {item}
                     </motion.span>

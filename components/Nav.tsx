@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-import DownloadCVButton from './DownloadCVButton'
+import DownloadCVButton from '@/components/DownloadCVButton'
 
 const NAV_LINKS = [
   { href: '#work', label: 'Work' },
@@ -29,33 +29,33 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-2 glass' : 'py-5'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 glass shadow-2xl shadow-black/20' : 'py-8'}`}>
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#top" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-            <div className="w-2 h-2 rounded-full bg-accent" />
-            <span className="mono text-[11px] font-bold tracking-[0.25em] uppercase transition-all group-hover:tracking-[0.35em]" style={{ color: 'var(--fg)' }}>
+          <a href="#top" className="flex items-center gap-4 group" onClick={() => setOpen(false)}>
+            <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
+            <span className="display text-xl font-medium tracking-tight transition-all group-hover:text-accent" style={{ color: 'var(--fg)' }}>
               Ahmed Mustafa
             </span>
           </a>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-10">
-            <div className="flex items-center gap-8 mono text-[10px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)' }}>
+          <div className="hidden lg:flex items-center gap-12">
+            <div className="flex items-center gap-10 mono text-[9px] tracking-[0.3em] uppercase font-bold" style={{ color: 'var(--muted)' }}>
               {NAV_LINKS.map(l => <a key={l.href} href={l.href} className="nav-link">{l.label}</a>)}
             </div>
             <div className="flex items-center gap-4">
               <DownloadCVButton variant="nav" />
               <a
                 href="#contact"
-                className="mono text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-lg border transition-all hover:border-accent hover:text-accent"
+                className="mono text-[9px] font-bold tracking-[0.3em] uppercase px-6 py-3 rounded-full border transition-all hover:border-accent hover:text-accent"
                 style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
               >
                 Hire me
               </a>
               <a
                 href="/tailor"
-                className="mono text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-lg transition-all hover:opacity-90 shadow-lg shadow-accent/20"
+                className="mono text-[9px] font-bold tracking-[0.3em] uppercase px-6 py-3 rounded-full transition-all hover:scale-105 shadow-xl shadow-accent/20"
                 style={{ backgroundColor: 'var(--accent)', color: 'white' }}
               >
                 Tailor.cv

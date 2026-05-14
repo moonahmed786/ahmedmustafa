@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowDown, MapPin, Database, Server, Code, Brain } from 'lucide-react'
-import DownloadCVButton from './DownloadCVButton'
+import DownloadCVButton from '@/components/DownloadCVButton'
 import { motion } from 'framer-motion'
 
 interface HeroProps {
@@ -79,9 +79,11 @@ export default function Hero({ loaded }: HeroProps) {
                 Ahmed
                 <br />
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-accent via-accent-warm to-accent bg-clip-text text-transparent italic">Mustafa</span>
+                  <span className="bg-gradient-to-r from-accent via-accent-warm to-accent bg-clip-text text-transparent italic">
+                    Mustafa
+                  </span>
                 </span>
-                <span className="display text-accent">.</span>
+                <span className="text-accent">.</span>
               </h1>
             </motion.div>
 
@@ -96,9 +98,8 @@ export default function Hero({ loaded }: HeroProps) {
               >
                 Senior Solutions Architect
               </div>
-              <p className="max-w-xl text-muted leading-relaxed text-xl font-light">
-                Architecting <span className="text-fg font-medium">Distributed Systems</span> and high-performance <span className="text-fg font-medium">AI Platforms</span>. 
-                Bridging enterprise engineering with next-gen AI implementation.
+              <p className="max-w-2xl text-muted leading-relaxed text-xl font-light">
+                <span className="text-fg font-medium">Senior Solutions Architect & Full-Stack Engineer</span> with 10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms using MERN, Laravel, FastAPI, AWS, and RAG/LLM systems.
               </p>
             </motion.div>
 
@@ -106,16 +107,16 @@ export default function Hero({ loaded }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-wrap items-center gap-5 pt-4"
             >
               <DownloadCVButton variant="hero" />
               <motion.a
                 whileHover={{ backgroundColor: 'var(--fg)', color: 'var(--bg)', x: 5 }}
                 href="#contact"
-                className="flex items-center gap-2 px-8 py-4 rounded-full border mono text-[11px] font-bold tracking-[0.18em] uppercase transition-all"
-                style={{ borderColor: 'var(--border)', color: 'var(--muted-fg)' }}
+                className="flex items-center gap-2 px-8 py-4 rounded-full border mono text-[10px] font-bold tracking-[0.2em] uppercase transition-all"
+                style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
               >
-                Let&apos;s talk
+                Hire me
               </motion.a>
             </motion.div>
           </div>

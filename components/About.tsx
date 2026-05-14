@@ -16,8 +16,8 @@ export default function About() {
         <p className="section-label mb-6">§01 / The Profile</p>
 
         <p className="display text-4xl md:text-6xl leading-tight mb-6 max-w-4xl" style={{ color: 'var(--fg)', fontWeight: 400 }}>
-          For a decade I&apos;ve been the person teams call when an idea needs a{' '}
-          <span className="italic">system</span>.
+          For a decade, I&apos;ve specialized in turning complex business visions into{' '}
+          <span className="italic">scalable, production-ready architectures</span>.
         </p>
         <p className="text-lg mb-20 max-w-2xl" style={{ color: 'var(--muted)', fontWeight: 300 }}>
           From a PHP dev writing first APIs at PTCL to leading architecture for AI-powered healthcare platforms — here&apos;s the breadth of what I&apos;ve shipped.

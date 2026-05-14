@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Nav from './Nav'
 import Hero from './Hero'
+import DownloadCVButton from '@/components/DownloadCVButton'
 import About from './About'
 import Experience from './Experience'
 import Work from './Work'
@@ -28,6 +29,8 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
+      <div className="bg-grid" />
+      <div className="bg-mesh" />
       <AnimatePresence>
         {!loaded && (
           <motion.div 
@@ -40,10 +43,10 @@ export default function Portfolio() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-3"
+              className="flex flex-col items-center gap-4"
             >
-              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="mono text-[10px] tracking-[0.3em] uppercase text-white">Initializing Engine...</span>
+              <div className="w-8 h-[1px] bg-accent animate-pulse" />
+              <span className="mono text-[9px] tracking-[0.4em] uppercase text-white/50">Initializing Architect...</span>
             </motion.div>
           </motion.div>
         )}
@@ -75,13 +78,14 @@ export default function Portfolio() {
               <div className="mono text-[10px] tracking-[0.2em] uppercase text-accent">Neural CV Engine</div>
               <h2 className="display text-4xl md:text-6xl text-fg">Tailor my profile to <br /><span className="italic">your exact requirements</span>.</h2>
               <p className="text-muted text-lg max-w-2xl mx-auto font-light">Experience our next-gen AI tailoring engine on a dedicated platform.</p>
-              <div className="pt-6">
+              <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
                 <a 
                   href="/tailor"
                   className="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-accent text-white mono text-[11px] font-bold tracking-[0.2em] uppercase hover:scale-105 transition-all shadow-xl shadow-accent/20"
                 >
                   Launch Neural Architect
                 </a>
+                <DownloadCVButton variant="hero" />
               </div>
             </motion.div>
           </div>

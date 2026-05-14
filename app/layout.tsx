@@ -13,10 +13,10 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ahmedmustafa.programmersin.com'),
-  title: 'Ahmed Mustafa — Senior Solutions Architect & AI Lead',
+  title: 'Ahmed Mustafa | Senior Software Engineer, Solutions Architect & AI/RAG Developer',
   description:
-    'Senior Solutions Architect with 10+ years of experience in AI, MERN, and Enterprise PHP. Leading AI Agent development, RAG systems, and scalable healthcare platforms.',
-  keywords: ['Solutions Architect', 'Full Stack Engineer', 'AI Agent Developer', 'RAG Specialist', 'Ahmed Mustafa Portfolio'],
+    'Senior Solutions Architect and Full-Stack Engineer with 10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms.',
+  keywords: ['Ahmed Mustafa', 'Node.js', 'Laravel', 'FastAPI', 'RAG', 'LLM', 'AWS', 'MERN', 'Healthcare SaaS', 'System Design', 'Senior Software Engineer', 'Solutions Architect'],
   authors: [{ name: 'Ahmed Mustafa' }],
   openGraph: {
     title: 'Ahmed Mustafa — Senior Solutions Architect',
@@ -53,7 +53,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
     >
       <body>
-        <div className="bg-mesh" />
         {children}
       </body>
     </html>

@@ -34,8 +34,7 @@ const TAGS = [
   'AI Agent Developer',
   'RAG & LLM Specialist',
   'Full Stack Expert',
-  'Legacy Software Modernizer',
-  'Vibe Code Cleaner'
+  'Legacy Software Modernizer'
 ]
 
 const ROLE_ICONS: Record<number, any> = {

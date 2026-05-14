@@ -54,6 +54,8 @@ export const PROJECTS = [
     desc: 'Conceptualized an AI-powered medical chatbot (FastAPI, RAG, LLMs, Next.js); raised response accuracy by 37–43% and lifted user engagement by 42%.',
     stack: ['FastAPI', 'RAG', 'LLMs', 'Next.js', 'Vector DB'],
     tag: 'AI / Healthcare',
+    link: 'https://github.com/moonahmed786',
+    image: '/assets/projects/alira.png'
   },
   {
     n: '02',
@@ -62,6 +64,8 @@ export const PROJECTS = [
     desc: 'Piloted development of a MERN-based carbon credit trading platform; boosted system performance by 32% via a scalable, modular architecture.',
     stack: ['MongoDB', 'Express', 'React', 'Node.js'],
     tag: 'Sustainability / Marketplace',
+    link: 'https://github.com/moonahmed786',
+    image: '/assets/projects/rocx.png'
   },
   {
     n: '03',
@@ -70,6 +74,8 @@ export const PROJECTS = [
     desc: 'Synchronized migration and integration of 14+ Ruby on Rails applications into Salesforce; cut manual work by 58% and streamlined workflow efficiency by 43%.',
     stack: ['Ruby on Rails', 'Salesforce', 'Integrations'],
     tag: 'Enterprise / Healthcare',
+    link: 'https://github.com/moonahmed786',
+    image: '/assets/projects/cchmc.png'
   },
   {
     n: '04',
@@ -78,6 +84,8 @@ export const PROJECTS = [
     desc: 'Engineered a GraphQL API using Laravel and developed core features for the Vue.js frontend for a North American healthcare platform, accelerating data retrieval efficiency by 33%.',
     stack: ['Laravel', 'GraphQL', 'Vue.js'],
     tag: 'Healthcare / SaaS',
+    link: 'https://github.com/moonahmed786',
+    image: '/assets/projects/carehubble.png'
   },
   {
     n: '05',
@@ -87,6 +95,8 @@ export const PROJECTS = [
     stack: ['React', 'Anthropic API', 'Prompt Engineering'],
     tag: 'AI / Tooling',
     featured: true,
+    link: '/tailor',
+    image: '/assets/projects/tailor.png'
   },
   {
     n: '06',
@@ -95,6 +105,8 @@ export const PROJECTS = [
     desc: 'Formulated a Laravel REST API for a ride-hailing platform with geo-based booking and real-time tracking; boosted trip allocation by 33% and cut booking response times.',
     stack: ['Laravel', 'MySQL', 'Geo APIs'],
     tag: 'Mobility',
+    link: 'https://github.com/moonahmed786',
+    image: '/assets/projects/taxi.png'
   },
 ]
 
