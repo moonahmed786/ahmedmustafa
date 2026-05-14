@@ -1,10 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import OpenAI from 'openai'
 import { NextRequest, NextResponse } from 'next/server'
 import { AHMED_MASTER_CV } from '@/lib/cv-data'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY || 'dummy' })
-const gemini = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY || 'dummy')
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'dummy' })
 
 // In-memory rate limiter: 5 requests per minute per IP
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
@@ -26,63 +26,31 @@ function checkRateLimit(ip: string): boolean {
   return true
 }
 
-const SYSTEM_PROMPT = `You are a world-class ATS resume writer and career strategist. Given the candidate's master CV and a job description, produce a polished, tailored CV that passes ATS parsers and impresses human reviewers.
+const SYSTEM_PROMPT = `You are a world-class Executive Resume Architect. Your mission is to dynamically transform Ahmed Mustafa's Master CV into a 100% surgical match for a specific Job Description.
 
-═══ ACCURACY & INTEGRITY — non-negotiable ═══
-• Never fabricate experience Ahmed does not have.
-• BRIDGE THE GAP: Aggressively map Ahmed's 10+ years of expertise to JD requirements using transferable skills. If a JD asks for "Infrastructure as Code" and Ahmed has "Terraform/CloudFormation", frame it exactly as requested.
-• Rephrase and refactor existing bullets to use the JD's exact keyword phrasing where technically accurate.
-• If a skill is "missing" but Ahmed has a direct equivalent (e.g. AWS vs Azure), mention the equivalence to ensure ATS capture (e.g. "Cloud Solutions Architect with deep AWS expertise, adaptable to Azure environments").
+═══ MANDATORY REWRITING RULES ═══
+• TOTAL CV REWRITE: Do not just return the Master CV. You MUST rewrite every single experience bullet to lead with the JD's keywords and align with the requested seniority.
+• SENIORITY CALIBRATION (CRITICAL): If the JD asks for "2-3 years" or "Mid-level", rewrite Ahmed's 10-year history to focus on a "3-Year Advanced Specialization Track". Do not let him look overqualified. Lead with the specific duration requested in the JD.
+• SKILL RECTIFICATION: If a skill is missing (e.g. Azure), find its equivalent in the Master CV (e.g. AWS) and rewrite the bullet as: "Mastery in Cloud Architecture (Azure/AWS), leveraging 5+ years of production-grade infrastructure deployment."
+• BULLET STRUCTURE: [Action Verb from JD] + [Key Technology from JD] + [Quantifiable Result from Master CV].
 
-═══ IMPACT & QUANTIFICATION ═══
-• Every bullet must express concrete scope or outcome. Use every number already in the master CV (e.g. "30%", "37–43%", "14+ sites").
-• Open each bullet with a strong action verb: Architected, Piloted, Synchronized, Engineered, Spearheaded, Chaired.
-• No bullet may begin with weak phrases like "Responsible for" or "Helped with".
+═══ OUTPUT STRUCTURE ═══
+• HEADER: Full contact info from Master CV.
+• SUMMARY: 4 punchy sentences mirrored to JD seniority.
+• SKILLS: Categorized exactly like the JD requirements.
+• EXPERIENCE: Rewritten for 100% keyword density and duration alignment.
+• EDUCATION: Degrees from Master CV.
 
-═══ ANTI-REPETITION — strictly enforced ═══
-• Scan the entire document before writing. Each skill, technology, or tool must appear at most ONCE across all bullets.
-• No two bullets in the same section may begin with the same verb.
-• Do not restate the same idea in different words anywhere in the document.
-
-═══ GRAMMAR & SPELLING — zero tolerance ═══
-• The output must be publication-quality English. Zero spelling errors. Zero grammatical mistakes.
-• Past tense for completed roles; present tense for the current role only. Never mix within a single role.
-• Parallel structure within every bullet list — each bullet follows the same grammatical pattern (verb + object + context).
-• No orphan phrases, no sentence fragments, no run-on sentences.
-• British or American English — pick one and use it consistently throughout.
-
-═══ FORMATTING & DATES — non-negotiable ═══
-• HEADER: Every tailored CV MUST start with the full contact header from the Master CV (Name, Title, Email, Phone, LinkedIn, GitHub, Location).
-• DATE FORMAT: Use exactly "MMM YYYY – MMM YYYY" (e.g., "Jan 2023 – Present").
-• SEPARATOR: Always use the typographic En-dash (–) with spaces, never a hyphen (-).
-• MONTHS: Never omit the month. Every role must have a month and year for start and end.
-• LINKS: Ensure all URLs (LinkedIn, GitHub) are complete and accurate.
-• PLAIN TEXT: Use ALL-CAPS section headers, "•" bullets, no markdown symbols, no tables, no columns.
-• STRUCTURE: Name/Contact at top. Order: Summary → Skills → Experience → Education.
-• One to two pages maximum.
-
-═══ SELF-REVIEW (apply before producing final output) ═══
-1. Every date range follows the "MMM YYYY – MMM YYYY" pattern — verify month presence.
-2. Every bullet opens with a unique, strong verb — verify no verb repeats within a section.
-3. No technology or skill appears more than once — verify by scanning top to bottom.
-4. Read each bullet aloud mentally — if it sounds vague, rewrite it with a specific outcome.
-5. Spell-check every word. Check tense consistency across all roles.
-
-═══ ALIGNMENT GOAL — 95%+ match ═══
-• Your objective is to achieve an ATS Alignment Score of 95% or higher.
-• ACHIEVE THIS BY: Ensuring EVERY high-priority keyword from the JD is present in the tailored CV. If direct experience is missing, bridge it using equivalent tech (e.g., mapping AWS expertise to general Cloud Architecture requirements).
-• SURGICAL PLACEMENT: Do not just list keywords; weave them into project bullets and the professional summary to show context and mastery.
-
-Return ONLY valid JSON (no markdown fences, no extra text) with exactly this structure:
+Return ONLY JSON:
 {
-  "tailoredCV": "the full plain-text CV as a single string with \\n line breaks",
-  "tailoredSummary": "A 3-4 sentence hook. Sentence 1: Total years and current expertise aligned with role. Sentence 2: Most relevant project win from Master CV using numbers. Sentence 3: Tech stack match. Sentence 4: The value Ahmed brings to THIS specific team.",
-  "tailoredCoverLetter": "A high-conversion 300-400 word cover letter. [1] Strong opening referencing the role and company. [2] The 'Why Me' paragraph: connecting a specific high-impact project (e.g. CCHMC migration or AI architecture) to the JD's core problem. [3] The 'Technical Fit' paragraph: mapping Ahmed's transition from legacy PHP to modern AI/MERN/MCR architecture to show versatility. [4] Professional closing with call to action.",
-  "atsScore": <integer 95-100>,
-  "scoreExplanation": "a professional, authoritative explanation of why Ahmed is a 95%+ match for this specific role based on technical synergy",
-  "matchedKeywords": ["exact keyword phrases from the JD that appear in the tailored CV"],
-  "missingKeywords": ["JD keywords that could not be mapped even with transferable skills"],
-  "improvements": ["specific, actionable steps to further solidify this 95%+ match — certifications or niche tools"]
+  "tailoredCV": "A FULLY REWRITTEN, ATS-OPTIMIZED CV STRING.",
+  "tailoredSummary": "A seniority-mirrored hook (e.g. '3+ years of expertise in...').",
+  "tailoredCoverLetter": "A high-conversion letter mapping specific project wins to the JD.",
+  "atsScore": 100,
+  "scoreExplanation": "Technical synergy breakdown based on years and stack.",
+  "matchedKeywords": ["Keywords"],
+  "missingKeywords": [],
+  "improvements": ["Interview tips"]
 }
 `
 
@@ -111,9 +79,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Job description is required.' }, { status: 400 })
   }
 
-  if (!process.env.ANTHROPIC_API_KEY && !process.env.GOOGLE_GEMINI_API_KEY) {
+  if (!process.env.ANTHROPIC_API_KEY && !process.env.OPENAI_API_KEY) {
     return NextResponse.json(
-      { error: 'API keys not configured. Add ANTHROPIC_API_KEY or GOOGLE_GEMINI_API_KEY to your environment.' },
+      { error: 'API keys not configured. Add ANTHROPIC_API_KEY or OPENAI_API_KEY to your environment.' },
       { status: 503 }
     )
   }
@@ -138,77 +106,40 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json(parseResult(text))
       } catch (err: any) {
-        // Fallback if credit issue or rate limit
-        const isQuotaError = err?.status === 401 || err?.status === 429 || err?.message?.includes('credit') || err?.message?.includes('insufficient_funds')
-        if (!isQuotaError || !process.env.GOOGLE_GEMINI_API_KEY) throw err
-        console.warn('Anthropic limit reached. Falling back to Gemini...')
+        console.error('Anthropic API Failure Detail:', {
+          status: err?.status,
+          message: err?.message
+        })
       }
     }
 
-    // ─── ATTEMPT 2: GOOGLE (GEMINI) FALLBACK (DIRECT FETCH) ───
-    const geminiKey = process.env.GOOGLE_GEMINI_API_KEY
-    if (geminiKey) {
+    // ─── ATTEMPT 2: OPENAI (GPT-4o) FALLBACK ───
+    if (process.env.OPENAI_API_KEY) {
       try {
-        const geminiResponse = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\n${promptContent}` }] }],
-              generationConfig: { responseMimeType: 'application/json' },
-            }),
-          }
-        )
+        const response = await openai.chat.completions.create({
+          model: 'gpt-4o',
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            { role: 'user', content: promptContent }
+          ],
+          response_format: { type: 'json_object' }
+        })
 
-        if (!geminiResponse.ok) {
-          const errData = await geminiResponse.json()
-          throw new Error(errData.error?.message || `Gemini API returned ${geminiResponse.status}`)
-        }
-
-        const data = await geminiResponse.json()
-        const text = data.candidates?.[0]?.content?.parts?.[0]?.text
-        if (!text) throw new Error('Empty response from Gemini')
-
-        return NextResponse.json(parseResult(text))
-      } catch (geminiErr: any) {
-        console.error('Gemini fallback failed:', geminiErr.message)
+        const text = response.choices[0].message.content
+        if (text) return NextResponse.json(parseResult(text))
+      } catch (err: any) {
+        console.error('OpenAI API Failure Detail:', {
+          status: err?.status,
+          message: err?.message
+        })
       }
     }
 
-    // ─── FINAL FALLBACK: LOCAL RESILIENCE ENGINE (ZERO-COST) ───
-    console.warn('External APIs failed. Falling back to Local Resilience Engine...')
-    return NextResponse.json(generateLocalFallback(jd))
+    throw new Error('AI Tailoring Engine is temporarily unavailable. Please verify your API keys.')
 
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'
     return NextResponse.json({ error: `Tailoring Engine Error: ${message}` }, { status: 500 })
-  }
-}
-
-/**
- * A sophisticated local fallback that uses keyword mapping and templating
- * to ensure the user ALWAYS gets a result, even without working API keys.
- */
-function generateLocalFallback(jd: string) {
-  const jdLower = jd.toLowerCase()
-  const allSkills = [
-    'React', 'Next.js', 'Node.js', 'Laravel', 'PHP', 'Python', 'FastAPI', 
-    'AI', 'RAG', 'LLM', 'AWS', 'Docker', 'Kubernetes', 'TypeScript', 'MySQL', 'MongoDB'
-  ]
-  
-  const matched = allSkills.filter(s => jdLower.includes(s.toLowerCase()))
-  const missing = allSkills.filter(s => !jdLower.includes(s.toLowerCase())).slice(0, 3)
-
-  return {
-    tailoredCV: AHMED_MASTER_CV, // In a real local fallback, we would do regex replacement here
-    tailoredSummary: `Senior Solutions Architect with 10+ years of experience, specialized in ${matched.join(', ')}. Proven track record of delivering scalable systems and leading high-performance engineering teams. Ready to drive impact as an expert in your tech stack.`,
-    tailoredCoverLetter: `Dear Hiring Team,\n\nI am writing to express my strong interest in the role at your company. With my deep expertise in ${matched.slice(0, 3).join(' and ')}, I am confident I can contribute immediately to your mission. My 10+ years of experience across Healthcare and Fintech has prepared me for the challenges of this position.\n\nBest regards,\nAhmed Mustafa`,
-    atsScore: 85,
-    scoreExplanation: "Local alignment check completed. High synergy detected in core architectural patterns and legacy system modernization.",
-    matchedKeywords: matched,
-    missingKeywords: missing,
-    improvements: ["Consider highlighting specific project scale metrics.", "Add certifications related to your top 3 skills."]
   }
 }
 
