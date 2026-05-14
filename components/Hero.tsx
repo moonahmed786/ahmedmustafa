@@ -70,25 +70,18 @@ export default function Hero({ loaded }: HeroProps) {
               <h1
                 className="display"
                 style={{
-                  fontSize: 'clamp(56px, 10vw, 120px)',
-                  lineHeight: 0.9,
+                  fontSize: 'clamp(64px, 11vw, 140px)',
+                  lineHeight: 0.85,
                   fontWeight: 400,
-                  letterSpacing: '-0.03em',
+                  letterSpacing: '-0.04em',
                 }}
               >
                 Ahmed
                 <br />
                 <span className="relative inline-block">
-                  <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Mustafa</span>
-                  <motion.span 
-                    initial={{ scaleX: 0 }}
-                    animate={loaded ? { scaleX: 1 } : {}}
-                    transition={{ duration: 1.2, delay: 0.8, ease: "circOut" }}
-                    className="absolute -bottom-2 left-0 h-[3px] w-full origin-left"
-                    style={{ backgroundColor: 'var(--accent)', opacity: 0.2 }}
-                  />
+                  <span className="bg-gradient-to-r from-accent via-accent-warm to-accent bg-clip-text text-transparent italic">Mustafa</span>
                 </span>
-                <span className="display" style={{ color: 'var(--accent)' }}>.</span>
+                <span className="display text-accent">.</span>
               </h1>
             </motion.div>
 
@@ -98,15 +91,14 @@ export default function Hero({ loaded }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.5 }}
             >
               <div
-                className="mono text-[11px] tracking-[0.15em] uppercase px-5 py-2.5 rounded-full inline-block mb-6 border"
-                style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)', color: 'var(--accent)', fontWeight: 600 }}
+                className="mono text-[10px] tracking-[0.25em] uppercase px-4 py-2 rounded-lg inline-block mb-8 border backdrop-blur-md"
+                style={{ backgroundColor: 'var(--accent-soft)', borderColor: 'var(--accent)', color: 'var(--accent)', fontWeight: 600 }}
               >
-                Senior Solutions Architect · Full-Stack Engineer
+                Senior Solutions Architect
               </div>
-              <p className="max-w-xl" style={{ color: 'var(--muted-fg)', fontSize: '1.25rem', lineHeight: 1.6, fontWeight: 300 }}>
-                I architect scalable distributed systems and AI platforms. 
-                Expert in <span className="font-medium text-fg">MERN, Laravel, and Python RAG</span> — 
-                transforming complex business needs into premium, production-grade software.
+              <p className="max-w-xl text-muted leading-relaxed text-xl font-light">
+                Architecting <span className="text-fg font-medium">Distributed Systems</span> and high-performance <span className="text-fg font-medium">AI Platforms</span>. 
+                Bridging enterprise engineering with next-gen AI implementation.
               </p>
             </motion.div>
 

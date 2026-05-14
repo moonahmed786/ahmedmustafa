@@ -1,68 +1,49 @@
 // ─── MASTER CV STRING (feeds AI Tailor engine & PDF generator) ─────────────────
 export const AHMED_MASTER_CV = `AHMED MUSTAFA
-Senior Solutions Architect and Full-Stack Engineer
-moonahmed786@gmail.com | +92 332 837 1943 | Rawalpindi, Punjab, PK · UTC+5
-linkedin.com/in/ahmed-mustafa-b3613754 | github.com/moonahmed786 | ahmedmustafa.programmersin.com
+Senior Solutions Architect · Full-Stack Engineer · Full-Stack .NET Developer
+moonahmed786@gmail.com · +92 332 837 1943 · Rawalpindi, Punjab, PK
+linkedin.com/in/ahmed-mustafa-b3613754 · github.com/moonahmed786 · ahmedmustafa.pro
 
-PROFESSIONAL SUMMARY
-Senior Solutions Architect and Technical Lead with 10+ years of experience designing scalable distributed systems and AI-integrated platforms across Healthcare, Fintech, E-commerce, and Telecom. Expert in the MERN stack, Enterprise PHP (Laravel), and Python (FastAPI, RAG, LLMs). Proven track record leading cross-functional engineering teams, conceptualizing high-concurrency microservices, and delivering production-grade AI products including medical chatbots, carbon credit platforms, and enterprise healthcare integrations. Strong in system design, API architecture, and stakeholder management.
+SUMMARY:
+Senior Solutions Architect with 10+ years experience in Distributed Systems & AI Platforms. Expert in MERN, Enterprise PHP (Laravel), .NET Core, and Python RAG/LLMs. Led cross-functional teams to deliver high-concurrency medical chatbots, carbon trading platforms, and enterprise healthcare integrations.
 
-KEY PROJECTS
-• AliraMed: Conceptualized an AI-powered medical chatbot (FastAPI, RAG, LLMs, Next.js); raised response accuracy by 37–43% and lifted user engagement by 42%. Healthcare AI.
-• RocX: Piloted development of a MERN-based carbon credit trading platform; boosted system performance by 32% via a scalable, modular architecture. Sustainability.
-• CCHMC: Synchronized migration and integration of 14+ Ruby on Rails applications into Salesforce; cut manual work by 58% and streamlined workflow efficiency by 43%. Enterprise Integration.
+EXPERIENCE:
 
-PROFESSIONAL EXPERIENCE
+Sr Tech Lead / Architect | Troon Technologies | Jan 2023 – Present
+• Led cross-functional teams (Backend, Frontend, DevOps) to boost productivity by 30%.
+• Built RocX: MERN-based carbon credit platform; improved performance by 32%.
+• Built AliraMed: Medical chatbot (FastAPI, RAG, LLMs); raised accuracy by 43%.
+• CCHMC: Integrated 14+ RoR apps into Salesforce; cut manual work by 58%.
+• Icon Exchange: Hospital staffing backend; accelerated API by 33%, 2x scalability.
+• PHC: Patient relocation system; cut latency by 28%, boosted speed by 36%.
 
-Senior Tech Lead and Solutions Architect | Troon Technologies | Jan 2023 – Present | Islamabad
-• Spearhead a cross-functional engineering team across backend, frontend, and DevOps; establish code review standards and mentor mid-level engineers, boosting engineering productivity by 30% and reducing time-to-market for key features by 22%.
-• Piloted development of a MERN-based carbon credit platform (RocX), boosting system performance by 32% through a scalable, modular architecture.
-• Conceptualized an AI-powered medical chatbot (AliraMed) using FastAPI, RAG, and LLMs, raising response accuracy by 37–43% and lifting user engagement by 42%.
-• Synchronized integration of 14+ Ruby on Rails applications into Salesforce (CCHMC), cutting manual work by 58% and streamlining workflow efficiency by 43%.
-• Chaired the backend team for a hospital staffing system (Icon Exchange), accelerating API performance by 33%, expanding scalability by 2x, and strengthening security by 47%.
-• Governed development of a hospital patient relocation system (PHC), increasing API speed by 36% and reducing latency by 28%.
-• Delivered enterprise systems across Healthcare, Fintech, and AI domains, enhancing delivery efficiency by 28% and cutting system downtime by 23%.
+Sr Software Engineer | Troon Technologies | Jan 2020 – Dec 2022
+• Carehubble: Laravel/Vue/GraphQL healthcare API; improved data retrieval by 33%.
+• MyRemedyApp: Laravel/Vue/GraphQL cannabis e-commerce; 28% performance boost.
+• MyHealthyGut: Yii2/MySQL nutrition backend; accelerated data processing by 37%.
 
-Senior Software Engineer | Troon Technologies | Jan 2020 – Dec 2022 | Islamabad
-• Engineered a GraphQL API using Laravel and developed core features for the Vue.js frontend for a North American healthcare platform (Carehubble), accelerating data retrieval efficiency by 33% and enabling scalable real-time healthcare workflows.
-• Forged a Laravel and Vue.js cannabis e-commerce platform (MyRemedyApp) with GraphQL API integration, boosting platform performance by 28%, strengthening transaction reliability, and supporting secure, scalable order management.
-• Devised a nutrition-focused backend system (MyHealthyGut) using Yii2 and MySQL, building robust REST APIs that accelerated data processing efficiency by 37% and enabled structured health tracking and analytics workflows.
+Jr Software Engineer | Troon Technologies | Jul 2017 – Dec 2019
+• ATS: Yii2/MySQL construction analysis; 38% accuracy gain, 47% manual work cut.
+• Cadenza: PHP music platform; improved user engagement by 33%.
 
-Junior Software Engineer | Troon Technologies | Jul 2017 – Dec 2019 | Islamabad
-• Devised Allied Technical Service (ATS), a Yii2 and MySQL construction-analysis and reconciliation system with OAuth; raised operational accuracy by 38% and cut manual effort by 47%.
-• Launched a PHP-based music learning platform (Cadenza) featuring lesson management, progress tracking, and structured learning workflows; lifted user engagement by 33% and strengthened content management efficiency through scalable platform architecture.
+Jr Software Engineer | Green Tech Lab | Aug 2016 – Jul 2017
+• Green Taxi: Laravel ride-hailing API; 33% faster allocation, 2x reliability boost.
 
-Junior Software Engineer | Green Tech Lab | Aug 2016 – Jul 2017 | Lahore
-• Formulated a Laravel REST API for ride-hailing platform Green Taxi with geo-based booking, driver matching, and real-time tracking; boosted trip allocation by 33% and cut booking response time by 28%.
-• Constructed scalable backend architecture using Laravel and MySQL, increasing system reliability by ~2x and improving concurrent request handling capacity while ensuring stable and efficient trip management workflows.
-• Refined location-based services and real-time request processing, raising tracking accuracy by 38% and reducing latency in live ride updates by 23%.
+Full-Stack Developer | PTCL | Jan 2015 – Jul 2016
+• HR Portal: PHP/MySQL; automated HR tasks, 47% manual work reduction.
 
-Full-Stack PHP Developer | PTCL (Pakistan Telecommunication Company Ltd.) | Jan 2015 – Jul 2016 | Lahore
-• Deployed a PHP and MySQL HR portal (WFM) automating attendance, scheduling, and performance reviews; cut manual HR operations by 47% and raised workforce efficiency by 33%.
-• Architected scalable backend architecture for workforce data management, increasing system reliability and processing efficiency by 28% through optimized workflows and automation systems.
+SKILLS:
+- Languages: PHP, Python, JS, TS, C#, .NET
+- Frameworks: Laravel, Yii2, Node, NestJS, FastAPI, .NET Core, React, Next, Vue
+- AI/ML: LLMs, RAG, AI Pipelines, Vector DBs (Pinecone, pgvector)
+- DevOps: AWS (EC2, S3, RDS, Lambda), Docker, CI/CD, GitHub Actions
+- Architecture: REST, GraphQL, Microservices, System Design
 
-SKILLS
-Languages: PHP, Python, JavaScript (ES6+), TypeScript
-Backend Frameworks: Laravel, Yii2, Node.js, NestJS, Express, FastAPI
-Frontend: React.js, Next.js, Vue.js
-Databases: MySQL, MongoDB, PostgreSQL, Redis, Vector Databases (Pinecone, pgvector)
-AI and Machine Learning: LLMs, RAG, AI Pipelines, Prompt Engineering, Vector Search
-Cloud and DevOps: AWS (EC2, S3, RDS, Lambda), Docker, CI/CD, GitHub Actions, Jenkins
-APIs and Architecture: REST, GraphQL, Microservices, Event-Driven Design, System Design
-Tools: Git, JIRA, Postman
-Spoken Languages: English (Professional), Urdu (Native), Punjabi (Native)
+EDUCATION:
+- MSCS | Superior University, Lahore | 2022
+- BSCS | Virtual University of Pakistan | 2016
 
-EDUCATION
-Master of Science in Computer Science - Superior University, Lahore | Sep 2020 – Dec 2022
-Bachelor of Science in Computer Science - Virtual University of Pakistan, Lahore | Oct 2012 – Nov 2016
-
-CERTIFICATIONS
-- Creative Writing
-- Freelancing
-- Soft Skills
-
-INDUSTRIES SERVED
-Healthcare, Fintech, E-commerce, Telecommunications, Blockchain, Web3, AI`
+INDUSTRIES: Healthcare, Fintech, E-commerce, AI, Sustainability`
 
 // ─── PROJECTS ──────────────────────────────────────────────────────────────────
 export const PROJECTS = [

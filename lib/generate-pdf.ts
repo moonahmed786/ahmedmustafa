@@ -1,4 +1,4 @@
-// Client-side only — imported dynamically inside onClick handlers
+import { jsPDF } from 'jspdf'
 import { TIMELINE, SKILLS, EDUCATION, CERTIFICATIONS } from '@/lib/cv-data'
 
 // Design Tokens (Single Column - High Compatibility)
@@ -17,7 +17,7 @@ const F_H2 = 11
 const F_H3 = 10
 
 export async function downloadMasterCVAsPDF(): Promise<void> {
-  const { default: jsPDF } = await import('jspdf')
+  if (typeof window === 'undefined') return
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
   
   const PH = doc.internal.pageSize.getHeight()
@@ -70,7 +70,7 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(F_BODY)
   doc.setTextColor(...C_GRAY)
-  const summary = 'Senior Solutions Architect and Technical Lead with 10+ years of experience designing scalable distributed systems and AI-integrated platforms across Healthcare, Fintech, E-commerce, and Telecom. Expert in the MERN stack, Enterprise PHP (Laravel), and Python (FastAPI, RAG, LLMs). Proven track record leading cross-functional engineering teams, conceptualizing high-concurrency microservices, and delivering production-grade AI products.'
+  const summary = 'Senior Solutions Architect with 10+ years experience in Distributed Systems & AI Platforms. Expert in MERN, Enterprise PHP (Laravel), .NET Core, and Python RAG/LLMs.'
   const sLines = doc.splitTextToSize(summary, CW)
   doc.text(sLines, MARGIN, y)
   y += sLines.length * 4.5 + 8
@@ -171,7 +171,7 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
 }
 
 export async function downloadTailoredCVAsPDF(cvText: string, filename: string): Promise<void> {
-  const { default: jsPDF } = await import('jspdf')
+  if (typeof window === 'undefined') return
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
 
   const PH = doc.internal.pageSize.getHeight()
@@ -180,7 +180,7 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
   const addPage = () => { doc.addPage(); y = MARGIN }
   const guard = (h: number) => { if (y + h > PH - MARGIN) addPage() }
 
-  // Header Block (Synced with Master CV)
+  // Header Block
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(F_H1)
   doc.setTextColor(...C_BLACK)
@@ -190,7 +190,7 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(11.5)
   doc.setTextColor(...C_ACCENT)
-  doc.text('Senior Solutions Architect & Full-Stack Engineer', MARGIN, y)
+  doc.text('Senior Solutions Architect · Full-Stack Engineer', MARGIN, y)
   y += 6
 
   doc.setFontSize(8.5)

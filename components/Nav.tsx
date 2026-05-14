@@ -33,30 +33,30 @@ export default function Nav() {
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#top" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'var(--accent-warm)' }} />
-            <span className="mono text-[12px] font-bold tracking-[0.2em] uppercase transition-all group-hover:tracking-[0.28em]" style={{ color: 'var(--fg)' }}>
+            <div className="w-2 h-2 rounded-full bg-accent" />
+            <span className="mono text-[11px] font-bold tracking-[0.25em] uppercase transition-all group-hover:tracking-[0.35em]" style={{ color: 'var(--fg)' }}>
               Ahmed Mustafa
             </span>
           </a>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-8">
-            <div className="flex items-center gap-6 mono text-[10px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)' }}>
+          <div className="hidden lg:flex items-center gap-10">
+            <div className="flex items-center gap-8 mono text-[10px] tracking-[0.2em] uppercase" style={{ color: 'var(--muted)' }}>
               {NAV_LINKS.map(l => <a key={l.href} href={l.href} className="nav-link">{l.label}</a>)}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <DownloadCVButton variant="nav" />
               <a
                 href="#contact"
-                className="mono text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2 rounded-full border transition-all hover:border-[var(--accent-warm)] hover:text-[var(--accent-warm)]"
+                className="mono text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-lg border transition-all hover:border-accent hover:text-accent"
                 style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
               >
                 Hire me
               </a>
               <a
-                href="#tool"
-                className="mono text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2 rounded-full transition-all hover:opacity-90"
-                style={{ backgroundColor: 'var(--accent)', color: 'var(--bg)' }}
+                href="/tailor"
+                className="mono text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 rounded-lg transition-all hover:opacity-90 shadow-lg shadow-accent/20"
+                style={{ backgroundColor: 'var(--accent)', color: 'white' }}
               >
                 Tailor.cv
               </a>
@@ -115,7 +115,7 @@ export default function Nav() {
               Hire me
             </a>
             <a
-              href="#tool"
+              href="/tailor"
               onClick={() => setOpen(false)}
               className="mono text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-4 rounded-full text-center border transition-all hover:border-[var(--accent)]"
               style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}

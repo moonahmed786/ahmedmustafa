@@ -57,7 +57,7 @@ function FeaturedCard({ p }: { p: Project }) {
           <div className="flex items-center gap-3 flex-wrap mb-6">
             <span
               className="mono text-[10px] font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full"
-              style={{ backgroundColor: 'var(--accent-warm-soft)', color: 'var(--accent-warm)', border: '1px solid rgba(245,158,11,0.25)' }}
+              style={{ backgroundColor: 'var(--accent-warm-soft)', color: 'var(--accent-warm)', border: '1px solid var(--accent-warm-soft)' }}
             >
               ★ Featured Project
             </span>
@@ -72,13 +72,13 @@ function FeaturedCard({ p }: { p: Project }) {
           <p className="mono text-[10px] tracking-wider uppercase mb-6" style={{ color: 'var(--muted)' }}>
             {p.role}
           </p>
-          <p className="text-base leading-relaxed max-w-xl mb-8" style={{ color: 'var(--muted-fg)' }}>
+          <p className="text-base leading-relaxed max-w-xl mb-8 font-light" style={{ color: 'var(--muted)' }}>
             {p.desc}
           </p>
           <a
             href="#tool"
-            className="inline-flex items-center gap-2 mono text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 rounded-full transition-all hover:bg-fg hover:text-bg"
-            style={{ backgroundColor: 'var(--accent)', color: '#000' }}
+            className="inline-flex items-center gap-2 mono text-[11px] font-bold tracking-[0.2em] uppercase px-8 py-4 rounded-full transition-all hover:bg-fg hover:text-bg"
+            style={{ backgroundColor: 'var(--accent)', color: 'white' }}
           >
             Try it live
             <ArrowUpRight size={14} />

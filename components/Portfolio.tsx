@@ -62,7 +62,31 @@ export default function Portfolio() {
         <Experience />
         <Work />
         <Capabilities />
-        <ToolDemo />
+        
+        {/* AI Engine CTA */}
+        <section className="px-6 py-24 border-t border-border">
+          <div className="max-w-6xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="mono text-[10px] tracking-[0.2em] uppercase text-accent">Neural CV Engine</div>
+              <h2 className="display text-4xl md:text-6xl text-fg">Tailor my profile to <br /><span className="italic">your exact requirements</span>.</h2>
+              <p className="text-muted text-lg max-w-2xl mx-auto font-light">Experience our next-gen AI tailoring engine on a dedicated platform.</p>
+              <div className="pt-6">
+                <a 
+                  href="/tailor"
+                  className="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-accent text-white mono text-[11px] font-bold tracking-[0.2em] uppercase hover:scale-105 transition-all shadow-xl shadow-accent/20"
+                >
+                  Launch Neural Architect
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         <Education />
         <Certifications />
         <Contact />
