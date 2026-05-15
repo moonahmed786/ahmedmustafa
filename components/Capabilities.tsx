@@ -1,6 +1,6 @@
 'use client'
 
-import { SKILLS } from '@/lib/cv-data'
+import { SKILLS, LANGUAGES } from '@/lib/cv-data'
 import { motion } from 'framer-motion'
 import { Code2, Server, Layout, Database, Brain, Cloud, Network, Wrench, BadgeCheck } from 'lucide-react'
 
@@ -123,7 +123,32 @@ export default function Capabilities() {
             )
           })}
         </motion.div>
-        <div className="border-t" style={{ borderColor: 'var(--border)' }} />
+        
+        {/* Languages & Communication */}
+        <div className="mt-20">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="w-10 h-0.5 bg-accent opacity-30" />
+            <h3 className="mono text-[11px] font-bold tracking-[0.3em] uppercase text-muted">Global Communication</h3>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {LANGUAGES.map((lang, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="surface p-6 border border-transparent hover:border-accent/10 transition-all"
+              >
+                <div className="text-sm font-medium mb-1" style={{ color: 'var(--fg)' }}>{lang.name}</div>
+                <div className="mono text-[9px] tracking-widest uppercase opacity-40">{lang.level}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div className="border-t mt-24" style={{ borderColor: 'var(--border)' }} />
       </div>
     </section>
   )

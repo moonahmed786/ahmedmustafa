@@ -1,5 +1,5 @@
 import { jsPDF } from 'jspdf'
-import { TIMELINE, SKILLS, EDUCATION, CERTIFICATIONS } from '@/lib/cv-data'
+import { TIMELINE, SKILLS, EDUCATION, CERTIFICATIONS, PROJECTS } from '@/lib/cv-data'
 
 // Design Tokens (Single Column - High Compatibility)
 const MARGIN = 15
@@ -19,7 +19,7 @@ const F_H3 = 10
 export async function downloadMasterCVAsPDF(): Promise<void> {
   if (typeof window === 'undefined') return
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
-  
+
   const PH = doc.internal.pageSize.getHeight()
   let y = MARGIN
 
@@ -84,7 +84,7 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
     doc.setTextColor(...C_BLACK)
     doc.text(`${s.cat}:`, MARGIN, y)
     const labelW = doc.getTextWidth(`${s.cat}: `)
-    
+
     doc.setFont('helvetica', 'normal')
     doc.setTextColor(...C_GRAY)
     const items = doc.splitTextToSize(s.items.join(', '), CW - labelW)
@@ -101,7 +101,7 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
     doc.setFontSize(F_H3)
     doc.setTextColor(...C_BLACK)
     doc.text(exp.role, MARGIN, y)
-    
+
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(9)
     doc.setTextColor(...C_LIGHT)
@@ -136,14 +136,14 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
     doc.setFontSize(F_H3)
     doc.setTextColor(...C_BLACK)
     doc.text(e.degree, MARGIN, y)
-    
+
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(9)
     doc.setTextColor(...C_LIGHT)
     const epW = doc.getTextWidth(e.period)
     doc.text(e.period, PW - MARGIN - epW, y)
     y += 5
-    
+
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(9)
     doc.setTextColor(...C_GRAY)
@@ -159,7 +159,7 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
     doc.setFontSize(9.5)
     doc.setTextColor(...C_BLACK)
     doc.text(c.name, MARGIN, y)
-    
+
     const issW = doc.getTextWidth(c.issuer)
     doc.setFont('helvetica', 'normal')
     doc.setTextColor(...C_LIGHT)
@@ -167,7 +167,7 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
     y += 5.5
   }
 
-  doc.save('ahmed-mustafa-cv.pdf')
+  doc.save('Ahmed Mustafa Resume.pdf')
 }
 
 export async function downloadTailoredCVAsPDF(cvText: string, filename: string): Promise<void> {
@@ -187,10 +187,26 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
   doc.text('AHMED MUSTAFA', MARGIN, y)
   y += 7
 
+  const lines = cvText.split('\n').map(l => l.trim()).filter(Boolean)
+
+  // Dynamic Role Extraction: First meaningful line that isn't the name or a known section
+  let targetRole = 'Senior Solutions Architect · Full-Stack Engineer'
+  let bodyStartIndex = 0
+
+  for (let i = 0; i < Math.min(lines.length, 3); i++) {
+    const l = lines[i]
+    if (l.toLowerCase().includes('ahmed mustafa') || l.includes('moonahmed786')) continue
+    if (l === l.toUpperCase() && !l.includes('SUMMARY') && !l.includes('EXPERIENCE')) {
+      targetRole = l
+      bodyStartIndex = i + 1
+      break
+    }
+  }
+
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(11.5)
   doc.setTextColor(...C_ACCENT)
-  doc.text('Senior Solutions Architect · Full-Stack Engineer', MARGIN, y)
+  doc.text(targetRole, MARGIN, y)
   y += 6
 
   doc.setFontSize(8.5)
@@ -205,13 +221,22 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
   doc.line(MARGIN, y, PW - MARGIN, y)
   y += 10
 
-  // Body
-  const lines = cvText.split('\n')
-  for (const rawLine of lines) {
-    const t = rawLine.trim()
-    if (!t || t.toLowerCase().includes('ahmed mustafa') || t.includes('moonahmed786')) continue
+  // Body Loop
+  let skippingProjects = false
+  for (let i = bodyStartIndex; i < lines.length; i++) {
+    const t = lines[i]
+    if (t.toLowerCase().includes('ahmed mustafa') || t.includes('moonahmed786')) continue
 
-    if (t === t.toUpperCase() && t.length > 3 && !/^[•\-]/.test(t)) {
+    // Detect and skip "Key Projects" section
+    const upperT = t.toUpperCase()
+    if (upperT.includes('KEY PROJECTS') || upperT.includes('SELECTED PROJECTS')) {
+      skippingProjects = true
+      continue
+    }
+
+    // Header Detection
+    if (t === upperT && t.length > 3 && !/^[•\-]/.test(t)) {
+      skippingProjects = false // Stop skipping when a new header starts
       y += 4
       guard(15)
       doc.setFont('helvetica', 'bold')
@@ -225,6 +250,9 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
       continue
     }
 
+    if (skippingProjects) continue
+
+    // Bullet Points
     if (/^[•\-]/.test(t)) {
       const bulletText = t.replace(/^[•\-]\s*/, '')
       doc.setFont('helvetica', 'normal')
@@ -238,6 +266,7 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
       continue
     }
 
+    // Normal Text
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(F_BODY)
     doc.setTextColor(...C_GRAY)
@@ -247,5 +276,5 @@ export async function downloadTailoredCVAsPDF(cvText: string, filename: string):
     y += textLines.length * 4.5 + 2
   }
 
-  doc.save(filename)
+  doc.save(filename || 'Ahmed Mustafa Tailored CV.pdf')
 }

@@ -11,9 +11,9 @@ EXPERIENCE:
 
 Sr Tech Lead / Architect | Troon Technologies | Jan 2023 – Present
 • Led cross-functional teams (Backend, Frontend, DevOps) to boost productivity by 30%.
-• Built RocX: MERN-based carbon credit platform; improved performance by 32%.
-• Built AliraMed: Medical chatbot (FastAPI, RAG, LLMs); raised accuracy by 43%.
-• CCHMC: Integrated 14+ RoR apps into Salesforce; cut manual work by 58%.
+• Built RocX: MERN-based carbon credit platform; improved performance by ~30%.
+• Built AliaMed: Medical chatbot (FastAPI, RAG, LLMs); raised accuracy by 35–45%.
+• CCHMC: Integrated 14+ RoR apps into Salesforce; cut manual work by ~60%.
 • Icon Exchange: Hospital staffing backend; accelerated API by 33%, 2x scalability.
 • PHC: Patient relocation system; cut latency by 28%, boosted speed by 36%.
 
@@ -33,9 +33,9 @@ Full-Stack Developer | PTCL | Jan 2015 – Jul 2016
 • HR Portal: PHP/MySQL; automated HR tasks, 47% manual work reduction.
 
 SKILLS:
-- Languages: PHP, Python, JS, TS, C#, .NET
-- Frameworks: Laravel, Yii2, Node, NestJS, FastAPI, .NET Core, React, Next, Vue
-- AI/ML: LLMs, RAG, AI Pipelines, Vector DBs (Pinecone, pgvector)
+- Languages: PHP, Python, JavaScript (ES6+), TypeScript, C#, .NET
+- Frameworks: Laravel, Yii2, Node.js, NestJS, Express, FastAPI, .NET Core, React.js, Next.js, Vue.js
+- AI & ML: LLMs, RAG, AI Pipelines, Vector DBs (Pinecone, pgvector)
 - DevOps: AWS (EC2, S3, RDS, Lambda), Docker, CI/CD, GitHub Actions
 - Architecture: REST, GraphQL, Microservices, System Design
 
@@ -43,15 +43,27 @@ EDUCATION:
 - MSCS | Superior University, Lahore | 2022
 - BSCS | Virtual University of Pakistan | 2016
 
-INDUSTRIES: Healthcare, Fintech, E-commerce, AI, Sustainability`
+INDUSTRIES: Healthcare, Fintech, E-commerce, AI, Sustainability
+ 
+ LANGUAGES:
+ - English (Professional)
+ - Urdu (Native)
+ - Punjabi (Native)
+ - Portuguese (Basic)
+
+KEY PROJECTS:
+- AliaMed: Architected AI medical chatbot (FastAPI, RAG, LLM, Next.js), boosting user engagement by ~40% and improving response accuracy by 35–45% — Healthcare AI
+- RocX: Led development of MERN-based carbon credit trading platform, improving system performance by ~30% through a scalable architecture — Sustainability
+- CCHMC: Managed migration and integration of 14+ Rails applications into Salesforce, reducing manual work by ~60% and improving workflow efficiency by ~40% — Enterprise Integration
+`
 
 // ─── PROJECTS ──────────────────────────────────────────────────────────────────
 export const PROJECTS = [
   {
     n: '01',
-    name: 'AliraMed',
+    name: 'AliaMed',
     role: 'Solutions Architect',
-    desc: 'Conceptualized an AI-powered medical chatbot (FastAPI, RAG, LLMs, Next.js); raised response accuracy by 37–43% and lifted user engagement by 42%.',
+    desc: 'Architected an AI medical chatbot (FastAPI, RAG, LLM, Next.js), boosting user engagement by ~40% and improving response accuracy by 35–45%.',
     stack: ['FastAPI', 'RAG', 'LLMs', 'Next.js', 'Vector DB'],
     tag: 'AI / Healthcare',
     link: 'https://github.com/moonahmed786',
@@ -61,7 +73,7 @@ export const PROJECTS = [
     n: '02',
     name: 'RocX',
     role: 'Technical Lead',
-    desc: 'Piloted development of a MERN-based carbon credit trading platform; boosted system performance by 32% via a scalable, modular architecture.',
+    desc: 'Led development of a MERN-based carbon credit trading platform, improving system performance by ~30% through a scalable architecture.',
     stack: ['MongoDB', 'Express', 'React', 'Node.js'],
     tag: 'Sustainability / Marketplace',
     link: 'https://github.com/moonahmed786',
@@ -71,7 +83,7 @@ export const PROJECTS = [
     n: '03',
     name: 'CCHMC',
     role: 'Solutions Architect',
-    desc: 'Synchronized migration and integration of 14+ Ruby on Rails applications into Salesforce; cut manual work by 58% and streamlined workflow efficiency by 43%.',
+    desc: 'Managed migration and integration of 14+ Rails applications into Salesforce, reducing manual work by ~60% and improving workflow efficiency by ~40%.',
     stack: ['Ruby on Rails', 'Salesforce', 'Integrations'],
     tag: 'Enterprise / Healthcare',
     link: 'https://github.com/moonahmed786',
@@ -119,9 +131,9 @@ export const TIMELINE = [
     location: 'Islamabad',
     notes: [
       'Spearhead a cross-functional engineering team across backend, frontend, and DevOps; establish code review standards and mentor mid-level engineers, boosting engineering productivity by 30% and reducing time-to-market for key features by 22%.',
-      'Piloted development of a MERN-based carbon credit platform (RocX), boosting system performance by 32% through a scalable, modular architecture.',
-      'Conceptualized an AI-powered medical chatbot (AliraMed) using FastAPI, RAG, and LLMs, raising response accuracy by 37–43% and lifting user engagement by 42%.',
-      'Synchronized integration of 14+ Ruby on Rails applications into Salesforce (CCHMC), cutting manual work by 58% and streamlining workflow efficiency by 43%.',
+      'Led development of a MERN-based carbon credit trading platform (RocX), improving system performance by ~30% through a scalable architecture.',
+      'Architected an AI medical chatbot (AliaMed) using FastAPI, RAG, and LLMs, raising response accuracy by 35–45% and boosting user engagement by ~40%.',
+      'Managed migration and integration of 14+ Rails applications into Salesforce (CCHMC), reducing manual work by ~60% and improving workflow efficiency by ~40%.',
       'Chaired the backend team for a hospital staffing system (Icon Exchange), accelerating API performance by 33%, expanding scalability by 2x, and strengthening security by 47%.',
       'Governed development of a hospital patient relocation system (PHC), increasing API speed by 36% and reducing latency by 28%.',
       'Delivered enterprise systems across Healthcare, Fintech, and AI domains, enhancing delivery efficiency by 28% and cutting system downtime by 23%.',
@@ -173,10 +185,10 @@ export const TIMELINE = [
 
 // ─── SKILLS ────────────────────────────────────────────────────────────────────
 export const SKILLS = [
-  { cat: 'Languages', icon: 'Code2', items: ['PHP', 'Python', 'JavaScript (ES6+)', 'TypeScript'] },
-  { cat: 'Backend Frameworks', icon: 'Server', items: ['Laravel', 'Yii2', 'Node.js', 'NestJS', 'Express', 'FastAPI'] },
+  { cat: 'Languages', icon: 'Code2', items: ['PHP', 'Python', 'JavaScript (ES6+)', 'TypeScript', 'C#'] },
+  { cat: 'Backend Frameworks', icon: 'Server', items: ['Laravel', 'Yii2', 'Node.js', 'NestJS', 'Express', 'FastAPI', '.NET Core'] },
   { cat: 'Frontend', icon: 'Layout', items: ['React.js', 'Next.js', 'Vue.js'] },
-  { cat: 'Databases', icon: 'Database', items: ['MySQL', 'MongoDB', 'PostgreSQL', 'Redis', 'Vector Databases (Pinecone, pgvector)'] },
+  { cat: 'Databases', icon: 'Database', items: ['MySQL', 'MongoDB', 'PostgreSQL', 'Redis', 'Vector DBs (Pinecone, pgvector)'] },
   { cat: 'AI & ML', icon: 'Brain', items: ['LLMs', 'RAG', 'AI Pipelines', 'Prompt Engineering', 'Vector Search'] },
   { cat: 'Cloud & DevOps', icon: 'Cloud', items: ['AWS (EC2, S3, RDS, Lambda)', 'Docker', 'CI/CD', 'GitHub Actions', 'Jenkins'] },
   { cat: 'APIs & Architecture', icon: 'Network', items: ['REST', 'GraphQL', 'Microservices', 'Event-Driven Design', 'System Design'] },
@@ -202,4 +214,12 @@ export const CERTIFICATIONS = [
   { name: 'Creative Writing', issuer: 'Professional Certification', file: '/assets/certificates/CREATIVE WRITING.png', icon: 'PenTool' },
   { name: 'Freelancing', issuer: 'Professional Certification', file: '/assets/certificates/FREELANCING.png', icon: 'Globe' },
   { name: 'Soft Skills', issuer: 'Professional Certification', file: '/assets/certificates/SOFTSKILLS.jpeg', icon: 'MessageSquare' },
+]
+
+// ─── LANGUAGES ───────────────────────────────────────────────────────────────
+export const LANGUAGES = [
+  { name: 'English', level: 'Professional' },
+  { name: 'Urdu', level: 'Native' },
+  { name: 'Punjabi', level: 'Native' },
+  { name: 'Portuguese', level: 'Basic' },
 ]

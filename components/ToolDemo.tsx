@@ -110,7 +110,16 @@ export default function ToolDemo() {
 
   const downloadPDF = async (text: string) => {
     const { downloadTailoredCVAsPDF } = await import('@/lib/generate-pdf')
-    await downloadTailoredCVAsPDF(text, `Ahmed-Mustafa-Tailored.pdf`)
+    
+    // Extract org name from roleName (e.g. "Engineer @ Google" -> "Google")
+    let org = 'Tailored'
+    if (roleName) {
+      const match = roleName.match(/(?:@| at | for )\s*(.+)$/i)
+      if (match && match[1]) org = match[1].trim()
+      else if (roleName.length < 20) org = roleName.trim()
+    }
+
+    await downloadTailoredCVAsPDF(text, `Ahmed Mustafa - ${org}.pdf`)
   }
 
   return (
