@@ -8,6 +8,17 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY || 'dumm
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'dummy' })
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY || 'dummy' })
 
+function getAvailableModel(preferred?: string): string {
+  if (preferred === 'groq' && process.env.GROQ_API_KEY && !process.env.GROQ_API_KEY.startsWith('gsk_3uS8')) return 'groq'
+  if (preferred === 'claude' && process.env.ANTHROPIC_API_KEY) return 'claude'
+  if (preferred === 'openai' && process.env.OPENAI_API_KEY) return 'openai'
+  
+  // Dynamic Fallback Priority
+  if (process.env.GROQ_API_KEY && !process.env.GROQ_API_KEY.startsWith('gsk_3uS8')) return 'groq'
+  if (process.env.ANTHROPIC_API_KEY) return 'claude'
+  return 'openai' 
+}
+
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
 
@@ -52,7 +63,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     jd = (body?.jd || '').trim().slice(0, 4000)
-    selectedModel = body?.model || 'openai' 
+    selectedModel = getAvailableModel(body?.model)
   } catch {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
   }

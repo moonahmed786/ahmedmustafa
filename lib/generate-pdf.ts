@@ -184,16 +184,16 @@ export async function downloadMasterCVAsPDF(): Promise<void> {
     const stackStr = p.stack.join(' · ')
     const stW = doc.getTextWidth(stackStr)
     doc.text(stackStr, PW - MARGIN - stW, y)
-    y += 5
+    y += 4
 
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(F_BODY)
     doc.setTextColor(...C_GRAY)
     const pDesc = doc.splitTextToSize(p.desc, CW)
     doc.text(pDesc, MARGIN, y)
-    y += pDesc.length * 4.5 + 3.5
+    y += pDesc.length * 4 + 2
   }
-  y += 3
+  y += 2
 
   // ── CERTIFICATIONS ──────────────────────────────────
   sectionHeader('Certifications')
