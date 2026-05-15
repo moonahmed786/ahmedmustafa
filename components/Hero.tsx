@@ -19,32 +19,32 @@ export default function Hero({ loaded }: HeroProps) {
   return (
     <section id="top" className="relative min-h-screen flex flex-col px-6 pt-28 pb-10 overflow-hidden">
       {/* Background Decorative Elements */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute top-1/4 -right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" 
+        className="absolute top-1/4 -right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"
       />
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2.5, ease: "easeOut", delay: 0.5 }}
-        className="absolute bottom-1/4 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10" 
+        className="absolute bottom-1/4 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10"
       />
 
       {/* Top bar */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={loaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="flex items-center justify-between"
       >
         <div className="flex items-center gap-2.5">
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-2 h-2 rounded-full" 
-            style={{ backgroundColor: 'var(--accent)' }} 
+            className="w-2 h-2 rounded-full"
+            style={{ backgroundColor: 'var(--accent)' }}
           />
           <span className="mono text-[11px] tracking-[0.2em] uppercase" style={{ color: 'var(--accent)' }}>
             Open to work
@@ -59,7 +59,7 @@ export default function Hero({ loaded }: HeroProps) {
       {/* Main Two-Column Layout */}
       <div className="flex-1 flex items-center py-10 md:py-20">
         <div className="w-full grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-20 items-center">
-          
+
           {/* Left Column: Information */}
           <div className="space-y-8">
             <motion.div
@@ -87,23 +87,28 @@ export default function Hero({ loaded }: HeroProps) {
               </h1>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <div
-                className="mono text-[10px] tracking-[0.25em] uppercase px-4 py-2 rounded-lg inline-block mb-8 border backdrop-blur-md"
-                style={{ backgroundColor: 'var(--accent-soft)', borderColor: 'var(--accent)', color: 'var(--accent)', fontWeight: 600 }}
-              >
-                Senior Solutions Architect
+              <div className="flex flex-wrap gap-3 mb-8">
+                {['Senior Solutions Architect', 'Senior Software Engineer', 'Full-Stack Developer'].map((role) => (
+                  <div
+                    key={role}
+                    className="mono text-[10px] tracking-[0.2em] uppercase px-4 py-2 rounded-lg border backdrop-blur-md"
+                    style={{ backgroundColor: 'var(--accent-soft)', borderColor: 'var(--accent)', color: 'var(--accent)', fontWeight: 600 }}
+                  >
+                    {role}
+                  </div>
+                ))}
               </div>
               <p className="max-w-2xl text-muted leading-relaxed text-xl font-light">
-                <span className="text-fg font-medium">Senior Solutions Architect & Full-Stack Engineer</span> with 10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms using MERN, Laravel, FastAPI, AWS, and RAG/LLM systems.
+                <span className="text-fg font-medium">Senior Solutions Architect · Senior Software Engineer · Full-Stack Developer</span> with 10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms using MERN, Laravel, FastAPI, AWS, and RAG/LLM systems.
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.7 }}
@@ -122,7 +127,7 @@ export default function Hero({ loaded }: HeroProps) {
           </div>
 
           {/* Right Column: Visual Stats Card */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9, x: 30 }}
             animate={loaded ? { opacity: 1, scale: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -132,8 +137,8 @@ export default function Hero({ loaded }: HeroProps) {
               <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/5 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000" />
               <div className="relative surface border p-10 rounded-2xl grid grid-cols-2 gap-8 bg-bg/80 backdrop-blur-xl">
                 {STATS.map(({ n, label, icon: Icon }, i) => (
-                  <motion.div 
-                    key={i} 
+                  <motion.div
+                    key={i}
                     whileHover={{ y: -5 }}
                     className="space-y-3"
                   >
@@ -146,7 +151,7 @@ export default function Hero({ loaded }: HeroProps) {
                     </div>
                   </motion.div>
                 ))}
-                
+
                 {/* Visual Connector Lines */}
                 <div className="col-span-2 pt-6 border-t mt-4" style={{ borderColor: 'var(--border)' }}>
                   <div className="flex items-center justify-between opacity-40">
@@ -154,13 +159,13 @@ export default function Hero({ loaded }: HeroProps) {
                     <span className="mono text-[9px] tracking-[0.1em] uppercase">Uptime: 99.9%</span>
                   </div>
                   <div className="h-1.5 w-full bg-surface rounded-full mt-3 overflow-hidden relative">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       animate={loaded ? { width: '92%' } : {}}
                       transition={{ duration: 2, delay: 1.5, ease: "circOut" }}
                       className="h-full bg-accent relative"
                     >
-                      <motion.div 
+                      <motion.div
                         animate={{ x: ['-100%', '200%'] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2"
@@ -194,10 +199,10 @@ export default function Hero({ loaded }: HeroProps) {
         <div className="hidden lg:block mono text-[10px] tracking-[0.15em] opacity-40 uppercase">
           Based in Rawalpindi, PK · Working Globally
         </div>
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex items-center gap-2 mono text-[10px] tracking-[0.2em] uppercase" 
+          className="flex items-center gap-2 mono text-[10px] tracking-[0.2em] uppercase"
           style={{ color: 'var(--accent)' }}
         >
           Scroll to explore

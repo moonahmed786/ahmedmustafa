@@ -1,11 +1,11 @@
 // ─── MASTER CV STRING (feeds AI Tailor engine & PDF generator) ─────────────────
 export const AHMED_MASTER_CV = `AHMED MUSTAFA
-Senior Solutions Architect · Full-Stack Engineer · Full-Stack .NET Developer
+Senior Solutions Architect · Senior Software Engineer · Full-Stack Developer
 moonahmed786@gmail.com · +92 332 837 1943 · Rawalpindi, Punjab, PK
-linkedin.com/in/ahmed-mustafa-b3613754 · github.com/moonahmed786 · ahmedmustafa.pro
+https://www.linkedin.com/in/ahmed-mustafa-b3613754 · https://github.com/moonahmed786 · https://ahmedmustafa.programmersin.com/
 
-SUMMARY:
-Senior Solutions Architect with 10+ years experience in Distributed Systems & AI Platforms. Expert in MERN, Enterprise PHP (Laravel), .NET Core, and Python RAG/LLMs. Led cross-functional teams to deliver high-concurrency medical chatbots, carbon trading platforms, and enterprise healthcare integrations.
+SUMMARY: 
+Solutions Architect & Technical Lead with over a decade of experience, specialising in translating complex business requirements into scalable and robust technical solutions. Expert in MERN (MongoDB, Express, React, Node) and enterprise PHP (Laravel) ecosystems with strong backend architecture skills. Proven experience in designing high-concurrency microservices and delivering Python-based AI solutions (FastAPI/RAG/LLM integrations) across Healthcare, Fintech, E-commerce, and Telecom domains.
 
 EXPERIENCE:
 
@@ -33,11 +33,11 @@ Full-Stack Developer | PTCL | Jan 2015 – Jul 2016
 • HR Portal: PHP/MySQL; automated HR tasks, 47% manual work reduction.
 
 SKILLS:
-- Languages: PHP, Python, JavaScript (ES6+), TypeScript, C#, .NET
-- Frameworks: Laravel, Yii2, Node.js, NestJS, Express, FastAPI, .NET Core, React.js, Next.js, Vue.js
+- Languages: PHP, Python, JavaScript (ES6+), TypeScript
+- Frameworks: Laravel, Yii2, Node.js, NestJS, Express, FastAPI, React.js, Next.js, Vue.js
 - AI & ML: LLMs, RAG, AI Pipelines, Vector DBs (Pinecone, pgvector)
 - DevOps: AWS (EC2, S3, RDS, Lambda), Docker, CI/CD, GitHub Actions
-- Architecture: REST, GraphQL, Microservices, System Design
+- Architecture: REST, GraphQL, Microservices, System Design, Databases, AI Pipelines, Distributed Systems
 
 EDUCATION:
 - MSCS | Superior University, Lahore | 2022
