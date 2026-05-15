@@ -3,6 +3,7 @@ import OpenAI from 'openai'
 import Groq from 'groq-sdk'
 import { NextRequest, NextResponse } from 'next/server'
 import { AHMED_MASTER_CV } from '@/lib/cv-data'
+import { getSession } from '@/lib/auth'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY || 'dummy' })
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'dummy' })
@@ -56,6 +57,11 @@ JSON OUTPUT ONLY:
 }`
 
 export async function POST(request: NextRequest) {
+  const session = await getSession()
+  if (!session) {
+    return NextResponse.json({ error: 'Sign in to use AI Tailor & Full Rewrite.' }, { status: 401 })
+  }
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
   if (!checkRateLimit(ip)) return NextResponse.json({ error: 'Rate limit exceeded.' }, { status: 429 })
 

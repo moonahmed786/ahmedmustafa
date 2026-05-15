@@ -9,19 +9,19 @@ export default function Footer() {
               Ahmed Mustafa
             </span>
           </div>
-          <p className="mono text-[10px] tracking-[0.15em] uppercase pl-4" style={{ color: '#665e52' }}>
+          <p className="mono text-[10px] tracking-[0.15em] uppercase pl-4" style={{ color: 'var(--footer-muted)' }}>
             Solutions Architect · Full-Stack Engineer · AI Builder
           </p>
         </div>
 
         <div className="flex items-center gap-6">
-          <span className="mono text-[10px] tracking-[0.12em] uppercase" style={{ color: '#4a4238' }}>
+          <span className="mono text-[10px] tracking-[0.12em] uppercase" style={{ color: 'var(--footer-muted-soft)' }}>
             © {new Date().getFullYear()}
           </span>
           <a
             href="#top"
             className="mono text-[10px] tracking-[0.2em] uppercase flex items-center gap-1.5 transition-colors hover:text-[var(--accent-warm)]"
-            style={{ color: '#665e52' }}
+            style={{ color: 'var(--footer-muted)' }}
           >
             Back to top ↑
           </a>

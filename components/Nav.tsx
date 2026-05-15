@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import DownloadCVButton from '@/components/DownloadCVButton'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const NAV_LINKS = [
   { href: '#work', label: 'Work' },
@@ -45,6 +46,7 @@ export default function Nav() {
               {NAV_LINKS.map(l => <a key={l.href} href={l.href} className="nav-link">{l.label}</a>)}
             </div>
             <div className="flex items-center gap-4">
+              <ThemeToggle />
               <DownloadCVButton variant="nav" />
               <a
                 href="#contact"
@@ -63,15 +65,18 @@ export default function Nav() {
             </div>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors"
-            style={{ color: 'var(--fg)', backgroundColor: open ? 'var(--surface)' : 'transparent', border: '1px solid', borderColor: open ? 'var(--border)' : 'transparent' }}
-            aria-label="Toggle menu"
-          >
-            {open ? <X size={19} /> : <Menu size={19} />}
-          </button>
+          {/* Mobile actions */}
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle compact />
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center justify-center w-10 h-10 rounded-lg transition-colors"
+              style={{ color: 'var(--fg)', backgroundColor: open ? 'var(--surface)' : 'transparent', border: '1px solid', borderColor: open ? 'var(--border)' : 'transparent' }}
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={19} /> : <Menu size={19} />}
+            </button>
+          </div>
         </div>
       </nav>
 
