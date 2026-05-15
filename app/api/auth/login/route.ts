@@ -27,11 +27,6 @@ export async function POST(request: NextRequest) {
   const adminEmail = process.env.ADMIN_EMAIL?.toLowerCase().trim()
   const adminHash = process.env.ADMIN_PASSWORD_HASH
 
-  console.log('--- AUTH DEBUG ---')
-  console.log('ADMIN_EMAIL:', adminEmail)
-  console.log('HASH_START:', adminHash?.substring(0, 10))
-  console.log('HASH_LENGTH:', adminHash?.length)
-
   if (!adminEmail || !adminHash) {
     return NextResponse.json({ error: 'Auth is not configured on the server.' }, { status: 500 })
   }
