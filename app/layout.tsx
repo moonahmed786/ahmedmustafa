@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     'Senior Solutions Architect and Full-Stack Engineer with 10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms.',
   keywords: ['Ahmed Mustafa', 'Node.js', 'Laravel', 'FastAPI', 'RAG', 'LLM', 'AWS', 'MERN', 'Healthcare SaaS', 'System Design', 'Senior Software Engineer', 'Solutions Architect'],
   authors: [{ name: 'Ahmed Mustafa' }],
+  icons: {
+    icon: '/assets/logo/favicon.png',
+  },
   openGraph: {
     title: 'Ahmed Mustafa — Senior Solutions Architect',
     description: '10+ years of experience in AI, MERN, and Enterprise Software.',
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'Ahmed Mustafa Portfolio',
     images: [
       {
-        url: '/og-image.png', // User should add this image to public folder
+        url: '/assets/logo/logo-large.png',
         width: 1200,
         height: 630,
       },
@@ -38,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ahmed Mustafa — Solutions Architect',
     description: 'Expert in AI Agents, RAG, and Scalable Backend Systems.',
-    images: ['/og-image.png'],
+    images: ['/assets/logo/logo-large.png'],
   },
   robots: {
     index: true,
@@ -54,7 +57,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {/* Fixed Background Logo Watermark */}
+          <div 
+            className="fixed inset-0 pointer-events-none z-0"
+            style={{
+              backgroundImage: 'url(/assets/logo/logo-extended.png)',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed',
+              backgroundSize: '50%',
+              opacity: 0.03
+            }}
+          />
+          <div className="relative z-10">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

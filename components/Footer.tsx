@@ -3,9 +3,9 @@ export default function Footer() {
     <footer className="relative px-6 py-12 border-t" style={{ borderColor: 'var(--border)', zIndex: 2 }}>
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <div className="flex items-center gap-2.5 mb-2">
-            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--accent-warm)' }} />
-            <span className="mono text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: 'var(--fg)' }}>
+          <div className="flex items-center gap-4 mb-2">
+            <img src="/assets/logo/logo-large.png" alt="Ahmed Mustafa" className="h-16 w-auto opacity-70 hover:opacity-100 transition-opacity" />
+            <span className="display text-[64px] font-bold tracking-tight leading-none" style={{ color: 'var(--fg)' }}>
               Ahmed Mustafa
             </span>
           </div>

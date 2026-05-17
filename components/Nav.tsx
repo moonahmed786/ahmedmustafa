@@ -33,9 +33,9 @@ export default function Nav() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 glass shadow-2xl shadow-black/20' : 'py-8'}`}>
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#top" className="flex items-center gap-4 group" onClick={() => setOpen(false)}>
-            <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-            <span className="display text-xl font-medium tracking-tight transition-all group-hover:text-accent" style={{ color: 'var(--fg)' }}>
+          <a href="#top" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
+            <img src="/assets/logo/logo-small.png" alt="Logo" className="h-8 w-auto transition-transform duration-300 group-hover:scale-110" />
+            <span className="display text-xl font-medium tracking-tight transition-colors duration-300 group-hover:text-accent" style={{ color: 'var(--fg)' }}>
               Ahmed Mustafa
             </span>
           </a>
