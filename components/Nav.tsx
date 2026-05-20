@@ -30,7 +30,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 glass shadow-2xl shadow-black/20' : 'py-8'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-4 glass shadow-2xl shadow-black/20' : 'py-7'}`}>
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#top" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
@@ -50,15 +50,15 @@ export default function Nav() {
               <DownloadCVButton variant="nav" />
               <a
                 href="#contact"
-                className="mono text-[9px] font-bold tracking-[0.3em] uppercase px-6 py-3 rounded-full border transition-all hover:border-accent hover:text-accent"
+                className="mono text-[9px] font-bold tracking-[0.3em] uppercase px-5 py-3 rounded-lg border transition-all hover:border-accent hover:text-accent"
                 style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
               >
                 Hire me
               </a>
               <a
                 href="/tailor"
-                className="mono text-[9px] font-bold tracking-[0.3em] uppercase px-6 py-3 rounded-full transition-all hover:scale-105 shadow-xl shadow-accent/20"
-                style={{ backgroundColor: 'var(--accent)', color: 'white' }}
+                className="mono text-[9px] font-bold tracking-[0.3em] uppercase px-5 py-3 rounded-lg transition-all hover:scale-[1.02] shadow-xl shadow-accent/20"
+                style={{ backgroundColor: 'var(--accent)', color: 'var(--on-accent)' }}
               >
                 Tailor.cv
               </a>
@@ -97,7 +97,7 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="display block text-5xl py-4 border-b transition-colors hover:text-[var(--accent-warm)]"
+                className="display block text-5xl py-4 border-b transition-colors hover:text-[var(--accent)]"
                 style={{
                   color: 'var(--fg)',
                   borderColor: 'var(--border)',
@@ -114,15 +114,15 @@ export default function Nav() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mono text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-4 rounded-full text-center transition-all hover:opacity-90"
-              style={{ backgroundColor: 'var(--accent-warm)', color: '#000' }}
+              className="mono text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-4 rounded-lg text-center transition-all hover:opacity-90"
+              style={{ backgroundColor: 'var(--accent)', color: 'var(--on-accent)' }}
             >
               Hire me
             </a>
             <a
               href="/tailor"
               onClick={() => setOpen(false)}
-              className="mono text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-4 rounded-full text-center border transition-all hover:border-[var(--accent)]"
+              className="mono text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-4 rounded-lg text-center border transition-all hover:border-[var(--accent)]"
               style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
             >
               Tailor.cv

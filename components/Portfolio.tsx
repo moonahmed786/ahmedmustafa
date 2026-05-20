@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import Nav from './Nav'
 import Hero from './Hero'
@@ -9,12 +10,15 @@ import About from './About'
 import Experience from './Experience'
 import Work from './Work'
 import Capabilities from './Capabilities'
-import ToolDemo from './ToolDemo'
 import Education from './Education'
 import Certifications from './Certifications'
 import Contact from './Contact'
 import Footer from './Footer'
-import CanvasBackground from './CanvasBackground'
+
+const CanvasBackground = dynamic(() => import('./CanvasBackground'), {
+  ssr: false,
+  loading: () => null,
+})
 
 export default function Portfolio() {
   const [loaded, setLoaded] = useState(false)
@@ -30,6 +34,8 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
+      <div className="bg-grid" />
+      <div className="bg-mesh" />
       <CanvasBackground />
       <AnimatePresence>
         {!loaded && (
@@ -66,24 +72,29 @@ export default function Portfolio() {
         <Work />
         <Capabilities />
         
-        {/* AI Engine CTA */}
         <section className="px-6 py-24 border-t border-border">
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="mx-auto max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="surface grid gap-10 px-6 py-12 md:px-12 lg:grid-cols-[1fr_360px]"
             >
-              <div className="mono text-[10px] tracking-[0.2em] uppercase text-accent">Neural CV Engine</div>
-              <h2 className="display text-4xl md:text-6xl text-fg">Tailor my profile to <br /><span className="italic">your exact requirements</span>.</h2>
-              <p className="text-muted text-lg max-w-2xl mx-auto font-light">Experience our next-gen AI tailoring engine on a dedicated platform.</p>
-              <div className="pt-6 flex flex-wrap items-center justify-center gap-4">
+              <div>
+                <div className="mono mb-5 text-[10px] tracking-[0.24em] uppercase text-accent">Executive CV Intelligence</div>
+                <h2 className="display max-w-4xl text-4xl leading-tight md:text-6xl text-fg">
+                  Match my background against the exact role you are hiring for.
+                </h2>
+                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+                  A dedicated AI workflow tailors the profile, maps keywords, and produces role-specific material for fast screening.
+                </p>
+              </div>
+              <div className="flex flex-col justify-end gap-4">
                 <a 
                   href="/tailor"
-                  className="inline-flex items-center gap-4 px-10 py-5 rounded-full bg-accent text-white mono text-[11px] font-bold tracking-[0.2em] uppercase hover:scale-105 transition-all shadow-xl shadow-accent/20"
+                  className="inline-flex justify-center px-10 py-5 rounded-xl bg-accent text-[var(--on-accent)] mono text-[11px] font-bold tracking-[0.2em] uppercase hover:scale-[1.02] transition-all shadow-xl shadow-accent/20"
                 >
-                  Launch Neural Architect
+                  Launch CV Engine
                 </a>
                 <DownloadCVButton variant="hero" />
               </div>

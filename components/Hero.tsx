@@ -1,209 +1,158 @@
 'use client'
 
-import { ArrowDown, MapPin, Database, Server, Code, Brain } from 'lucide-react'
-import DownloadCVButton from '@/components/DownloadCVButton'
 import { motion } from 'framer-motion'
+import { ArrowDown, Brain, BriefcaseBusiness, CheckCircle2, MapPin, Network, ShieldCheck, Sparkles } from 'lucide-react'
+import DownloadCVButton from '@/components/DownloadCVButton'
 
 interface HeroProps {
   loaded: boolean
 }
 
-const STATS = [
-  { n: '10+', label: 'Years Exp', icon: Server },
-  { n: '50+', label: 'Projects', icon: Code },
-  { n: '100%', label: 'Delivery', icon: Database },
-  { n: 'AI', label: 'Enabled', icon: Brain },
+const IMPACT = [
+  { value: '10+', label: 'Years building platforms' },
+  { value: '50+', label: 'Production systems shipped' },
+  { value: '14+', label: 'Enterprise apps integrated' },
+]
+
+const FOCUS = [
+  { icon: Brain, title: 'AI product architecture', text: 'RAG, LLM workflows, FastAPI services, vector search, and applied automation.' },
+  { icon: Network, title: 'Enterprise delivery', text: 'Scalable APIs, platform migrations, cloud deployment, and cross-team technical leadership.' },
+  { icon: ShieldCheck, title: 'Healthcare-grade systems', text: 'Secure, reliable platforms for healthcare, fintech, sustainability, and operations teams.' },
 ]
 
 export default function Hero({ loaded }: HeroProps) {
   return (
-    <section id="top" className="relative min-h-screen flex flex-col px-6 pt-28 pb-10 overflow-hidden">
-      {/* Background Decorative Elements */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute top-1/4 -right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2.5, ease: "easeOut", delay: 0.5 }}
-        className="absolute bottom-1/4 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10"
-      />
-
-      {/* Top bar */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="flex items-center justify-between"
-      >
-        <div className="flex items-center gap-2.5">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-2 h-2 rounded-full"
-            style={{ backgroundColor: 'var(--accent)' }}
-          />
-          <span className="mono text-[11px] tracking-[0.2em] uppercase" style={{ color: 'var(--accent)' }}>
-            Open to work
-          </span>
-        </div>
-        <div className="hidden sm:flex items-center gap-1.5 mono text-[11px] tracking-[0.12em]" style={{ color: 'var(--muted)' }}>
-          <MapPin size={11} style={{ color: 'var(--accent)' }} />
-          Rawalpindi, Punjab, PK · UTC+5
-        </div>
-      </motion.div>
-
-      {/* Main Two-Column Layout */}
-      <div className="flex-1 flex items-center py-10 md:py-20">
-        <div className="w-full grid lg:grid-cols-[1.2fr,0.8fr] gap-12 lg:gap-20 items-center">
-
-          {/* Left Column: Information */}
-          <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={loaded ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            >
-              <h1
-                className="display"
-                style={{
-                  fontSize: 'clamp(64px, 11vw, 140px)',
-                  lineHeight: 0.9,
-                  fontWeight: 400,
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                Ahmed
-                <br />
-                <span className="relative inline-block">
-                  <span className="text-accent italic">
-                    Mustafa
-                  </span>
-                </span>
-                <span className="text-accent-warm">.</span>
-              </h1>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={loaded ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <div className="flex flex-wrap gap-3 mb-8">
-                {['Senior Solutions Architect', 'Senior Software Engineer', 'Full-Stack Developer'].map((role) => (
-                  <div
-                    key={role}
-                    className="mono text-[10px] tracking-[0.2em] uppercase px-4 py-2 rounded-lg border backdrop-blur-md"
-                    style={{ backgroundColor: 'var(--accent-soft)', borderColor: 'var(--accent)', color: 'var(--accent)', fontWeight: 600 }}
-                  >
-                    {role}
-                  </div>
-                ))}
-              </div>
-              <p className="max-w-2xl text-muted leading-relaxed text-xl font-light">
-                <span className="text-fg font-medium">Senior Solutions Architect · Senior Software Engineer · Full-Stack Developer</span> with 10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms using MERN, Laravel, FastAPI, AWS, and RAG/LLM systems.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={loaded ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="flex flex-wrap items-center gap-5 pt-4"
-            >
-              <DownloadCVButton variant="hero" />
-              <motion.a
-                whileHover={{ backgroundColor: 'var(--fg)', color: 'var(--bg)', x: 5 }}
-                href="#contact"
-                className="flex items-center gap-2 px-8 py-4 rounded-full border mono text-[10px] font-bold tracking-[0.2em] uppercase transition-all"
-                style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
-              >
-                Hire me
-              </motion.a>
-            </motion.div>
+    <section id="top" className="relative min-h-screen px-6 pt-28 pb-10">
+      <div className="mx-auto grid min-h-[calc(100vh-9rem)] max-w-7xl grid-rows-[auto_1fr_auto]">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={loaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="flex flex-wrap items-center justify-between gap-4 border-b pb-6"
+          style={{ borderColor: 'var(--border)' }}
+        >
+          <div className="flex items-center gap-3">
+            <span className="h-2.5 w-2.5 rounded-full bg-accent shadow-[0_0_24px_var(--accent)]" />
+            <span className="mono text-[10px] font-bold tracking-[0.28em]" style={{ color: 'var(--accent)' }}>
+              Available for senior engineering leadership
+            </span>
           </div>
+          <div className="hidden items-center gap-2 sm:flex mono text-[10px] tracking-[0.2em]" style={{ color: 'var(--muted)' }}>
+            <MapPin size={13} style={{ color: 'var(--accent)' }} />
+            Rawalpindi, PK / Working globally
+          </div>
+        </motion.div>
 
-          {/* Right Column: Visual Stats Card */}
+        <div className="grid items-center gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 30 }}
-            animate={loaded ? { opacity: 1, scale: 1, x: 0 } : {}}
-            transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block"
+            initial={{ opacity: 0, y: 28 }}
+            animate={loaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+            className="max-w-4xl"
           >
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/5 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000" />
-              <div className="relative surface border p-10 rounded-2xl grid grid-cols-2 gap-8 bg-bg/80 backdrop-blur-xl">
-                {STATS.map(({ n, label, icon: Icon }, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ y: -5 }}
-                    className="space-y-3"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <Icon size={18} style={{ color: 'var(--accent)' }} />
-                    </div>
-                    <div>
-                      <div className="display text-4xl mb-1" style={{ color: 'var(--fg)' }}>{n}</div>
-                      <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-60">{label}</div>
-                    </div>
-                  </motion.div>
-                ))}
+            <div
+              className="mb-7 inline-flex max-w-full items-center gap-3 rounded-xl border px-4 py-2"
+              style={{ borderColor: 'var(--border)', background: 'var(--surface-elev)' }}
+            >
+              <Sparkles size={15} style={{ color: 'var(--accent)' }} />
+              <span className="mono truncate text-[10px] tracking-[0.22em]" style={{ color: 'var(--muted)' }}>
+                AI systems / cloud platforms / high-trust software
+              </span>
+            </div>
 
-                {/* Visual Connector Lines */}
-                <div className="col-span-2 pt-6 border-t mt-4" style={{ borderColor: 'var(--border)' }}>
-                  <div className="flex items-center justify-between opacity-40">
-                    <span className="mono text-[9px] tracking-[0.1em] uppercase">System Latency: 24ms</span>
-                    <span className="mono text-[9px] tracking-[0.1em] uppercase">Uptime: 99.9%</span>
-                  </div>
-                  <div className="h-1.5 w-full bg-surface rounded-full mt-3 overflow-hidden relative">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={loaded ? { width: '92%' } : {}}
-                      transition={{ duration: 2.5, delay: 1.5, ease: "easeInOut" }}
-                      className="h-full bg-accent/80 relative rounded-full"
-                    >
-                    </motion.div>
-                  </div>
-                </div>
+            <h1
+              className="display max-w-5xl break-words"
+              style={{
+                color: 'var(--fg)',
+                fontSize: 'clamp(42px, 7.2vw, 100px)',
+                lineHeight: 0.92,
+                letterSpacing: '-0.032em',
+              }}
+            >
+              Architecture for AI, cloud, and enterprise systems.
+            </h1>
+
+            <div className="mt-9 grid max-w-4xl gap-6 border-l pl-6 md:grid-cols-[1fr_auto]" style={{ borderColor: 'var(--accent)' }}>
+              <p className="text-lg leading-relaxed md:text-xl" style={{ color: 'var(--muted)' }}>
+                Ahmed Mustafa is a Senior Solutions Architect and engineering lead with a decade of experience across AI, healthcare, fintech, enterprise integrations, and full-stack delivery.
+              </p>
+              <div className="flex flex-wrap items-start gap-3 md:flex-col">
+                <DownloadCVButton variant="hero" />
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center rounded-xl border px-8 py-4 mono text-[10px] font-bold tracking-[0.22em] transition-all hover:border-accent hover:text-accent"
+                  style={{ borderColor: 'var(--border)', color: 'var(--fg)' }}
+                >
+                  Start a conversation
+                </a>
               </div>
             </div>
           </motion.div>
 
-        </div>
-      </div>
+          <motion.aside
+            initial={{ opacity: 0, x: 36 }}
+            animate={loaded ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
+            className="surface relative overflow-hidden p-5 md:p-6"
+          >
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+            <div className="rounded-xl border p-5" style={{ borderColor: 'var(--border)', background: 'var(--surface-elev)' }}>
+              <div className="mb-8 flex items-center justify-between">
+                <div>
+                  <p className="mono mb-2 text-[9px] tracking-[0.28em]" style={{ color: 'var(--muted)' }}>EXECUTIVE BRIEF</p>
+                  <h2 className="text-2xl font-semibold tracking-tight" style={{ color: 'var(--fg)' }}>Technical operator</h2>
+                </div>
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}>
+                  <BriefcaseBusiness size={20} />
+                </div>
+              </div>
 
-      {/* Bottom bar */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={loaded ? { opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 1 }}
-        className="pt-8 border-t flex items-center justify-between flex-wrap gap-6"
-        style={{ borderColor: 'var(--border)' }}
-      >
-        <div className="flex lg:hidden items-center gap-8 md:gap-14 flex-wrap">
-          {STATS.map(({ n, label }, i) => (
-            <div key={i} className="flex items-baseline gap-2">
-              <span className="display text-3xl md:text-4xl" style={{ color: 'var(--fg)', fontWeight: 400 }}>{n}</span>
-              <span className="mono text-[10px] tracking-[0.15em] uppercase opacity-60">{label}</span>
+              <div className="grid grid-cols-3 gap-3">
+                {IMPACT.map((item) => (
+                  <div key={item.label} className="rounded-lg border p-3" style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}>
+                    <div className="display text-3xl" style={{ color: 'var(--fg)' }}>{item.value}</div>
+                    <div className="mt-2 mono text-[8px] leading-relaxed tracking-[0.16em]" style={{ color: 'var(--muted)' }}>{item.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 space-y-3">
+                {FOCUS.map(({ icon: Icon, title, text }) => (
+                  <div key={title} className="grid grid-cols-[34px_1fr] gap-4 rounded-lg border p-4" style={{ borderColor: 'var(--border)' }}>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg" style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}>
+                      <Icon size={16} />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold" style={{ color: 'var(--fg)' }}>{title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>{text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </motion.aside>
         </div>
-        <div className="hidden lg:block mono text-[10px] tracking-[0.15em] opacity-40 uppercase">
-          Based in Rawalpindi, PK · Working Globally
-        </div>
+
         <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex items-center gap-2 mono text-[10px] tracking-[0.2em] uppercase"
-          style={{ color: 'var(--accent)' }}
+          initial={{ opacity: 0 }}
+          animate={loaded ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="flex flex-wrap items-center justify-between gap-5 border-t pt-6"
+          style={{ borderColor: 'var(--border)' }}
         >
-          Scroll to explore
-          <ArrowDown size={12} />
+          <div className="flex flex-wrap gap-3">
+            {['MERN', 'Laravel', 'FastAPI', 'AWS', 'RAG / LLM'].map((item) => (
+              <span key={item} className="chip inline-flex items-center gap-2">
+                <CheckCircle2 size={12} style={{ color: 'var(--accent)' }} />
+                {item}
+              </span>
+            ))}
+          </div>
+          <a href="#about" className="flex items-center gap-2 mono text-[10px] tracking-[0.22em]" style={{ color: 'var(--accent)' }}>
+            Explore profile <ArrowDown size={13} />
+          </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }

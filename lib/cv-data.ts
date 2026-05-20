@@ -67,7 +67,6 @@ export const PROJECTS = [
     stack: ['FastAPI', 'RAG', 'LLMs', 'Next.js', 'Vector DB'],
     tag: 'AI / Healthcare',
     link: 'https://github.com/moonahmed786',
-    image: '/assets/projects/alira.png'
   },
   {
     n: '02',
@@ -77,7 +76,6 @@ export const PROJECTS = [
     stack: ['MongoDB', 'Express', 'React', 'Node.js'],
     tag: 'Sustainability / Marketplace',
     link: 'https://github.com/moonahmed786',
-    image: '/assets/projects/rocx.png'
   },
   {
     n: '03',
@@ -87,7 +85,6 @@ export const PROJECTS = [
     stack: ['Ruby on Rails', 'Salesforce', 'Integrations'],
     tag: 'Enterprise / Healthcare',
     link: 'https://github.com/moonahmed786',
-    image: '/assets/projects/cchmc.png'
   },
   {
     n: '04',
@@ -97,7 +94,6 @@ export const PROJECTS = [
     stack: ['Laravel', 'GraphQL', 'Vue.js'],
     tag: 'Healthcare / SaaS',
     link: 'https://github.com/moonahmed786',
-    image: '/assets/projects/carehubble.png'
   },
   {
     n: '05',
@@ -108,7 +104,6 @@ export const PROJECTS = [
     tag: 'AI / Tooling',
     featured: true,
     link: '/tailor',
-    image: '/assets/projects/tailor.png'
   },
   {
     n: '06',
@@ -118,7 +113,6 @@ export const PROJECTS = [
     stack: ['Laravel', 'MySQL', 'Geo APIs'],
     tag: 'Mobility',
     link: 'https://github.com/moonahmed786',
-    image: '/assets/projects/taxi.png'
   },
 ]
 

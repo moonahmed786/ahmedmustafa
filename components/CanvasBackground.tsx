@@ -1,17 +1,18 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
+import { useTheme } from 'next-themes'
 import * as THREE from 'three'
 
-function ParticleSwarm() {
+function ParticleSwarm({ color, opacity }: { color: string; opacity: number }) {
   const ref = useRef<THREE.Points>(null)
   
-  // Generate a sphere of particles
   const particles = useMemo(() => {
-    const temp = new Float32Array(3000)
-    for (let i = 0; i < 3000; i += 3) {
+    const pointCount = 520
+    const temp = new Float32Array(pointCount * 3)
+    for (let i = 0; i < temp.length; i += 3) {
       const r = 5 * Math.cbrt(Math.random())
       const theta = Math.random() * 2 * Math.PI
       const phi = Math.acos(2 * Math.random() - 1)
@@ -34,11 +35,11 @@ function ParticleSwarm() {
       <Points ref={ref} positions={particles} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="var(--accent)"
-          size={0.04}
+          color={color}
+          size={0.032}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.6}
+          opacity={opacity}
         />
       </Points>
     </group>
@@ -46,10 +47,33 @@ function ParticleSwarm() {
 }
 
 export default function CanvasBackground() {
+  const { resolvedTheme, theme } = useTheme()
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (media.matches) return
+
+    const timer = setTimeout(() => setReady(true), 500)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
+  if (!ready) return null
+
+  const activeTheme = theme === 'light' || resolvedTheme === 'light' ? 'light' : 'dark'
+  const color = activeTheme === 'light' ? '#0369a1' : '#38bdf8'
+  const opacity = activeTheme === 'light' ? 0.22 : 0.3
+
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 8] }}>
-        <ParticleSwarm />
+    <div className="fixed inset-0 z-0 pointer-events-none opacity-70">
+      <Canvas
+        camera={{ position: [0, 0, 8] }}
+        dpr={[1, 1.25]}
+        gl={{ antialias: false, powerPreference: 'low-power' }}
+      >
+        <ParticleSwarm color={color} opacity={opacity} />
       </Canvas>
     </div>
   )
