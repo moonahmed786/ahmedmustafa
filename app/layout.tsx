@@ -1,16 +1,22 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Instrument_Serif } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import ThemeProvider from '@/components/ThemeProvider'
 
-const instrumentSerif = Instrument_Serif({
-  weight: ['400'],
-  style: ['normal', 'italic'],
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-instrument-serif',
+  variable: '--font-inter',
+  display: 'swap',
 })
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ahmed Mustafa",
+  "url": "https://ahmedmustafa.programmersin.com",
+  "jobTitle": "Senior Solutions Architect",
+  "description": "10+ years of experience building scalable AI, healthcare, fintech, and enterprise platforms."
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ahmedmustafa.programmersin.com'),
@@ -54,9 +60,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable} ${instrumentSerif.variable}`}
+      className={`${inter.variable} font-sans`}
     >
-      <body>
+      <body suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider>
           {/* Fixed Background Logo Watermark */}
           <div 
@@ -70,7 +80,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               opacity: 0.03
             }}
           />
-          <div className="relative z-10">
+          
+          <div className="relative z-10 w-full min-h-screen">
             {children}
           </div>
         </ThemeProvider>

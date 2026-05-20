@@ -14,6 +14,7 @@ import Education from './Education'
 import Certifications from './Certifications'
 import Contact from './Contact'
 import Footer from './Footer'
+import CanvasBackground from './CanvasBackground'
 
 export default function Portfolio() {
   const [loaded, setLoaded] = useState(false)
@@ -29,8 +30,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
-      <div className="bg-grid" />
-      <div className="bg-mesh" />
+      <CanvasBackground />
       <AnimatePresence>
         {!loaded && (
           <motion.div 

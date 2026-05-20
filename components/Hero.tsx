@@ -71,19 +71,19 @@ export default function Hero({ loaded }: HeroProps) {
                 className="display"
                 style={{
                   fontSize: 'clamp(64px, 11vw, 140px)',
-                  lineHeight: 0.85,
+                  lineHeight: 0.9,
                   fontWeight: 400,
-                  letterSpacing: '-0.04em',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 Ahmed
                 <br />
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-accent via-accent-warm to-accent bg-clip-text text-transparent italic">
+                  <span className="text-accent italic">
                     Mustafa
                   </span>
                 </span>
-                <span className="text-accent">.</span>
+                <span className="text-accent-warm">.</span>
               </h1>
             </motion.div>
 
@@ -162,14 +162,9 @@ export default function Hero({ loaded }: HeroProps) {
                     <motion.div
                       initial={{ width: 0 }}
                       animate={loaded ? { width: '92%' } : {}}
-                      transition={{ duration: 2, delay: 1.5, ease: "circOut" }}
-                      className="h-full bg-accent relative"
+                      transition={{ duration: 2.5, delay: 1.5, ease: "easeInOut" }}
+                      className="h-full bg-accent/80 relative rounded-full"
                     >
-                      <motion.div
-                        animate={{ x: ['-100%', '200%'] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-1/2"
-                      />
                     </motion.div>
                   </div>
                 </div>
