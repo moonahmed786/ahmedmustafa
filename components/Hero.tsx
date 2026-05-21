@@ -1,12 +1,5 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { ArrowDown, Brain, BriefcaseBusiness, CheckCircle2, MapPin, Network, ShieldCheck, Sparkles } from 'lucide-react'
 import DownloadCVButton from '@/components/DownloadCVButton'
-
-interface HeroProps {
-  loaded: boolean
-}
 
 const IMPACT = [
   { value: '10+', label: 'Years building platforms' },
@@ -20,14 +13,11 @@ const FOCUS = [
   { icon: ShieldCheck, title: 'Healthcare-grade systems', text: 'Secure, reliable platforms for healthcare, fintech, sustainability, and operations teams.' },
 ]
 
-export default function Hero({ loaded }: HeroProps) {
+export default function Hero() {
   return (
     <section id="top" className="relative min-h-screen px-6 pt-28 pb-10">
       <div className="mx-auto grid min-h-[calc(100vh-9rem)] max-w-7xl grid-rows-[auto_1fr_auto]">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={loaded ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.15 }}
+        <div
           className="flex flex-wrap items-center justify-between gap-4 border-b pb-6"
           style={{ borderColor: 'var(--border)' }}
         >
@@ -41,13 +31,10 @@ export default function Hero({ loaded }: HeroProps) {
             <MapPin size={13} style={{ color: 'var(--accent)' }} />
             Rawalpindi, PK / Working globally
           </div>
-        </motion.div>
+        </div>
 
         <div className="grid items-center gap-10 py-12 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={loaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+          <div
             className="max-w-4xl"
           >
             <div
@@ -87,12 +74,9 @@ export default function Hero({ loaded }: HeroProps) {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.aside
-            initial={{ opacity: 0, x: 36 }}
-            animate={loaded ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.38 }}
+          <aside
             className="surface relative overflow-hidden p-5 md:p-6"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
@@ -130,13 +114,10 @@ export default function Hero({ loaded }: HeroProps) {
                 ))}
               </div>
             </div>
-          </motion.aside>
+          </aside>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={loaded ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.9 }}
+        <div
           className="flex flex-wrap items-center justify-between gap-5 border-t pt-6"
           style={{ borderColor: 'var(--border)' }}
         >
@@ -151,7 +132,7 @@ export default function Hero({ loaded }: HeroProps) {
           <a href="#about" className="flex items-center gap-2 mono text-[10px] tracking-[0.22em]" style={{ color: 'var(--accent)' }}>
             Explore profile <ArrowDown size={13} />
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
